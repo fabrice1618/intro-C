@@ -449,15 +449,15 @@ int main()
 ```
 - bool : false ou true −→ booléen
 - unsigned char: 0 à 255 −→ 1 octet ou 8 bits
-- [signed] char: -128 à 127 −→ 1 octet mais en entier relatif
+- [signed] char: -128 à +127 −→ 1 octet mais en entier relatif
 - unsigned short [int]: 0 à 65535 −→ 2 octets ou 16 bits
 - [signed] short [int]: -32768 à +32767 −→ 2 octets mais en entier relatif
 - unsigned int: 0 à 4.295e9 −→ 4 octets
 - [signed] int: -2.147e9 à +2.147e9 −→ 4 octets mais en entier relatif
 - unsigned long [int]: 0 à 4.295e9 −→ entier sur 4 octets ou plus ; sur PC identique à "int"
-- [signed] long [int]: -2.147e9 à -2.147e9−→idem mais en entier relatif
+- [signed] long [int]: -2.147e9 à +2.147e9−→idem mais en entier relatif
 - unsigned long long [int]: 0 à 18.4e18 −→ sur 8 octets
-- [signed] long long [int]: -9.2e18 à -9.2e18 −→idem mais en entier relatif
+- [signed] long long [int]: -9.2e18 à +9.2e18 −→idem mais en entier relatif
 ```
 
 - Les types à virgule flottante :
