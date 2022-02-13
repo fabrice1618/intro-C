@@ -198,7 +198,7 @@ void say_hello();
 #endif
 
 // Version internationale
-#ifndef LANG_FR
+#ifndef LANG_EN
 #define MSG_HELLO "Hello world!\n"
 #endif
 ```
@@ -690,20 +690,20 @@ int a = 0;
 // Danger : si le premier opérande suffit à déterminer l’évaluation du résultat logique
 
 // Attention : a++ != 5 n’est pas évalué donc (a n’est pas incrémenté) 
-// car 0 < 1 et donc toujous VRAI dans un OU**
+// car 0 < 1 et donc toujous VRAI dans un OU
 if ( 0 < 1 || a++ != 5 ) 
     printf("VRAI !\n"); // Affiche toujours : VRAI!
 else 
     printf("FAUX !\n");
 
 // Attention : a++ != 5 n’est pas évalué donc (a n’est pas incrémenté) 
-// car 1 < 0 et et donc toujous FAUX dans un ET**
+// car 1 < 0 et et donc toujous FAUX dans un ET
 if ( 1 < 0 && a++ != 5 ) 
     printf("VRAI !\n");
 else 
-    printf("FAUX !\n"); **// Affiche toujours : FAUX!**
+    printf("FAUX !\n"); // Affiche toujours : FAUX!
 
-printf("a = %d\n", a); **// Affichera toujours : a = 0 !!!**
+printf("a = %d\n", a); // Affichera toujours : a = 0 !!!
 ```
 
 Il ne faut pas confondre les opérateurs logiques avec les opérateurs bit à bit. Pour les opérateurs bit à bit, il est conseillé d’utiliser la représentation en hexadécimale :
@@ -954,7 +954,7 @@ if (prix < 10) {
 
 peut aussi s’écrire :
 ```C
-#include <stdbool.h> /* nécessaire en C */**
+#include <stdbool.h> /* nécessaire en C */
 
 bool estPasCher = (prix < 10);
 
@@ -1142,17 +1142,16 @@ Fuite de mémoire: L'allocation dynamique dans le tas ne permet pas la désalloc
 
 !!!! Exemple à refaire avec malloc et free
 
-Exemple d’allocation dynamique :
+Exemple d’allocation dynamique en C++:
 ```C
-**#include <iostream>
 #include <iostream>
-#include <new>**
+#include <new>
 
-**using namespace** std;
+using namespace std;
 
-**int** main ()
+int main ()
 {
-**int** * p1 = new **int** ; **// pointeur sur un entier**
+int * p1 = new int ; // pointeur sur un entier
 
 *p1 = 1; // ecrit 1 dans la zone mémoire allouée
 cout << *p1 << endl; // lit et affiche le contenu de la zone mémoire allouée
