@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Programmation C : Notions de base
 
 Les objectifs de ce cours sont de découvrir les bases du langage C / C ++.
@@ -5924,5 +5923,3 @@ if (fabs(x - 2.) < epsilon)
 if (fabs(x) < epsilon)
     printf("x est égal à 0 !\n");
 ```
-
->>>>>>> e116d16d565c9489fef93807386fba17a1c4345a
