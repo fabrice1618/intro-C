@@ -4,14 +4,18 @@ Les objectifs de ce cours sont de découvrir les bases du langage C / C ++.
 
 ## Premier programme : Hello world en C
 
-Voici une version du premier programme que l’on étudie habituellement. Il affiche “Hello world !” à
-l’écran.
+Voici une version du premier programme que l’on étudie habituellement. Il affiche “Hello world !” à l’écran.
 
+Dans tout ce document, si vous rencontrez la commande vi vous pourrez la remplacer par la commande nano. vi et nano sont des éditeurs de texte, nano est probablement plus simple à utiliser.
+
+Créer un sous-répertoire code et créer le fichier hello.c
 ```bash
-$ mkdir ~/code/helloworld
-$ cd ~/code/helloworld
-$ vi hello.c
+$ mkdir ~/code
+$ cd ~/code
+$ nano hello.c
 ```
+
+Code source du fichier hello.c
 
 ```C
 // hello.c
@@ -41,9 +45,8 @@ Hello world !
 - Tout programme C doit posséder une (et une seule) **fonction** nommée main(dite fonction principale) pour indiquer où commencer l’exécution. 
 
 - Une fonction est essentiellement une **suite d’instructions** que l’ordinateur exécutera dans l’ordre où elles sont écrites. Une fonction comprend quatre parties :
-  - un **type de retour** : ici int(pour _integer_ ou entier) qui spécifie le type de résultat que la fonction
-    retournera lors de son exécution. En C, le mot int est un mot réservé (un mot-clé) : il ne peut donc pas être utilisé pour nommer autre chose.
-  - un **nom** : ici main, c’est le nom donné à la fonction (attention main est un mot-clé.
+  - un **type de retour** : ici int(pour _integer_ ou entier) qui spécifie le type de résultat que la fonction retournera lors de son exécution. En C, le mot int est un mot réservé (un mot-clé) : il ne peut donc pas être utilisé pour nommer autre chose.
+  - un **nom** : ici main, c’est le nom donné à la fonction (attention main est un mot-clé).
   - une **liste de paramètres (ou d’arguments)** entre parenthèses : ici la liste de paramètres est vide
   - un **corps de fonction** entre accolades {...} qui énumère les instructions que la fonction doit exécuter
 
@@ -52,8 +55,7 @@ Hello world !
 - En C/C++, les **chaînes de caractères** sont délimitées par des double quote (")."Hello world !\n" est donc une chaîne de caractères. 
 - Le code \n est un “caractère spécial” indiquant le passage à une nouvelle ligne ( _newline_ ou LF ).
 - En C, on utilise printf(et scanf) pour afficher sur le flux de sortie standard (et lire sur le flux d’entrée).
-- Commentaire multi-lignes : Tout ce qui est placé entre /* et */ est considéré comme un commentaire. Le contenu du commentaire est ignoré par le compilateur (la machine). Ce commentaire rend le code plus lisible pour les programmeurs. On écrit des commentaires pour décrire ce que le programme est supposé faire et, d’une
-manière générale, pour fournir des informations utiles impossibles à exprimer directement dans le code.
+- Commentaire multi-lignes : Tout ce qui est placé entre /* et */ est considéré comme un commentaire. Le contenu du commentaire est ignoré par le compilateur (la machine). Ce commentaire rend le code plus lisible pour les programmeurs. On écrit des commentaires pour décrire ce que le programme est supposé faire et, d’une manière générale, pour fournir des informations utiles impossibles à exprimer directement dans le code.
 ```C
 /*
 Ce programme affiche le message "Hello world !" à l’écran
@@ -63,15 +65,9 @@ Ce programme affiche le message "Hello world !" à l’écran
 ```C
 printf("Hello world !\n"); // Affiche "Hello world !"
 ```
-- La fonction main de ce programme retourne la valeur 0 (return 0;) à celui qui l’a appelée. Comme
-main() est appelée par le “système”, il recevra cette valeur. Sur certains systèmes (Unix/Linux), elle peut
-servir à vérifier si le programme s’est exécuté correctement. Un zéro ( 0 ) indique alors que le programme
-s’est terminé avec succès (c’est une convention UNIX). Évidemment, une valeur différente de 0 indiquera
-que le programme a rencontré une erreur et sa valeur précisera alors le type de l’erreur.
+- La fonction main de ce programme retourne la valeur 0 (return 0;) à celui qui l’a appelée. Comme main() est appelée par le “système”, il recevra cette valeur. Sur certains systèmes (Unix/Linux), elle peut servir à vérifier si le programme s’est exécuté correctement. Un zéro ( 0 ) indique alors que le programme s’est terminé avec succès (c’est une convention UNIX). Évidemment, une valeur différente de 0 indiquera que le programme a rencontré une erreur et sa valeur précisera alors le type de l’erreur.
 
-- En C, une ligne qui commence par un # fait référence à une **directive** du préprocesseur (ou de
-pré-compilation). Le préprocesseur ne traite pas des instructions C(donc pas de ";"). Ici, la directive
-#include <stdio.h> demande à l’ordinateur de rendre accessible (d’“inclure”) des fonctionnalités contenues dans un fichier nommé stdio.h. Ce fichier est fourni avec le compilateur. Un fichier inclus au moyen de #include porte l’extension.h . On l’appelle en-tête ( _header_ ) ou **fichier d’en-tête**.
+- En C, une ligne qui commence par un # fait référence à une **directive** du préprocesseur (ou de pré-compilation). Le préprocesseur ne traite pas des instructions C(donc pas de ";"). Ici, la directive #include <stdio.h> demande à l’ordinateur de rendre accessible (d’“inclure”) des fonctionnalités contenues dans un fichier nommé stdio.h. Ce fichier est fourni avec le compilateur. Un fichier inclus au moyen de #include porte l’extension.h . On l’appelle en-tête ( _header_ ) ou **fichier d’en-tête**.
 
 ## Compilation
 
@@ -79,38 +75,23 @@ C est un langage compilé. Cela signifie que, pour pouvoir exécuter un programm
 
 Ce que le programmeur écrit est le code source (ou programme source) et ce que l’ordinateur exécute s’appelle exécutable, code objet ou code machine.
 
-Vous allez constater que le compilateur est plutôt pointilleux sur la syntaxe! Comme tous les
-programmeurs, vous passerez beacoup de temps à chercher des erreurs dans du code source. Et la plupart
-de temps, le code contient des erreurs! Lorsque vous coderez, le compilateur risque parfois de vous agacer.
-Toutefois, il a généralement raison car vous avez certainement écrit quelque chose qui n’est pas défini
-précisément par la norme C et qu’il empêche de produire du code objet.
+Vous allez constater que le compilateur est plutôt pointilleux sur la syntaxe! Comme tous les programmeurs, vous passerez beacoup de temps à chercher des erreurs dans du code source. Et la plupart de temps, le code contient des erreurs! Lorsque vous coderez, le compilateur risque parfois de vous agacer.
+Toutefois, il a généralement raison car vous avez certainement écrit quelque chose qui n’est pas défini précisément par la norme C et qu’il empêche de produire du code objet.
 
-- Le compilateur est dénué de bon sens et d’intelligence (il n’est pas humain) et il est donc très
-pointilleux. Prenez en compte les messages d’erreur et analysez les bien car souvenez-vous en bien le
-compilateur est “votre ami”, et peut-être le meilleur que vous ayez lorsque vous programmez.
+- Le compilateur est dénué de bon sens et d’intelligence (il n’est pas humain) et il est donc très pointilleux. Prenez en compte les messages d’erreur et analysez les bien car souvenez-vous en bien le compilateur est “votre ami”, et peut-être le meilleur que vous ayez lorsque vous programmez.
 
 
 ## Édition des liens
 
-Un programme contient généralement plusieurs parties distinctes, souvent développées par des personnes différentes. Par exemple, le programme “Hello world !” est constitué de la partie que nous avons
-écrite, plus d’autres qui proviennent de la bibliothèque standard de C(printf par exemple).
-Ces parties distinctes doivent être liées ensemble pour former un programme exécutable. Le programme
-qui lie ces parties distinctes s’appelle un éditeur de liens ( linker ).
+Un programme contient généralement plusieurs parties distinctes, souvent développées par des personnes différentes. Par exemple, le programme “Hello world !” est constitué de la partie que nous avons écrite, plus d’autres qui proviennent de la bibliothèque standard de C(printf par exemple).
+Ces parties distinctes doivent être liées ensemble pour former un programme exécutable. Le programme qui lie ces parties distinctes s’appelle un éditeur de liens ( linker ).
 
-Notez que le code objet et les exécutables ne sont pas portables entre systèmes. Par exemple, si vous
-compilez pour une machine Windows, vous obtiendrez un code objet qui ne fonctionnera pas sur une machine Linux.
+Notez que le code objet et les exécutables ne sont pas portables entre systèmes. Par exemple, si vous compilez pour une machine Windows, vous obtiendrez un code objet qui ne fonctionnera pas sur une machine Linux.
 
-Une bibliothèque n’est rien d’autre que du code (qui ne contient pas de fonction main évidemment)
-auquel nous accédons au moyen de **déclarations** se trouvant dans un fichier d’en-tête. Une déclaration
-est une suite d’instruction qui indique comment une portion de code (qui se trouve dans une bibliothèque)
-peut être utilisée. Le débutant a tendance à confondre bibliothèques et fichiers d’en-tête.
+Une bibliothèque n’est rien d’autre que du code (qui ne contient pas de fonction main évidemment) auquel nous accédons au moyen de **déclarations** se trouvant dans un fichier d’en-tête. Une déclaration est une suite d’instruction qui indique comment une portion de code (qui se trouve dans une bibliothèque) peut être utilisée. Le débutant a tendance à confondre bibliothèques et fichiers d’en-tête.
 
-Une **_bibliothèque dynamique_** est une bibliothèque qui contient du code qui sera intégré au moment
-de l’exécution du programme. Les avantages sont que le programme est de taille plus petite et qu’il sera à
-jour vis-à-vis de la mise à jour des bibliothèques. L’inconvénient est que l’exécution dépend de l’existence
-de la bibliothèque sur le système cible. Une bibliothèque dynamique, Dynamic Link Library (.dll) pour
-Windows et shared object (.so) sous UNIX/Linux, est un fichier de bibliothèque logicielle utilisé par un
-programme exécutable, mais n’en faisant pas partie.
+Une **_bibliothèque dynamique_** est une bibliothèque qui contient du code qui sera intégré au moment de l’exécution du programme. Les avantages sont que le programme est de taille plus petite et qu’il sera à jour vis-à-vis de la mise à jour des bibliothèques. L’inconvénient est que l’exécution dépend de l’existence
+de la bibliothèque sur le système cible. Une bibliothèque dynamique, Dynamic Link Library (.dll) pour Windows et shared object (.so) sous UNIX/Linux, est un fichier de bibliothèque logicielle utilisé par un programme exécutable, mais n’en faisant pas partie.
 
 ## Les erreurs 
 
@@ -142,13 +123,17 @@ Les différentes étapes de fabrication d’un programme sont :
 
 ## Décomposition des étapes de fabrication avec gcc:
 
+### 1 - Création des fichiers sources
+
 ```bash
-$ cd ~/code/helloworld
+$ cd ~/code
 $ vi hello2.c
 $ vi say_hello.c
 $ vi say_hello.h
 $ vi lang_hello.h
 ```
+
+fichier principal:
 
 ```C
 // hello2.c
@@ -165,6 +150,8 @@ int main()
 }
 ```
 
+définition de la fonction say_hello()
+
 ```C
 // say_hello.c
 #include <stdio.h>
@@ -178,6 +165,8 @@ void say_hello()
 }
 ```
 
+fichier d'entête 
+
 ```C
 // say_hello.h
 
@@ -188,6 +177,8 @@ void say_hello();
 
 #endif
 ```
+
+fichier de définition des traductions
 
 ```C
 // lang_hello.h
@@ -203,7 +194,7 @@ void say_hello();
 #endif
 ```
 
-### Compilation en une étape
+### 2 - Compilation en une étape
 
 ```bash
 $ gcc -o hello2 hello2.c say_hello.c
@@ -211,7 +202,7 @@ $ ./hello2
 Bonjour monde !
 ```
 
-### Pré-compilation :
+### 3- Pré-compilation :
 
 Il est possible de vérifier les fichiers, juste après l'étape de préprocesseur. 
 
@@ -238,7 +229,7 @@ void say_hello()
 }
 ```
 
-### Compilation :
+### 4 - Compilation :
 
 ```
 $ gcc -S -o say_hello.s say_hello.c 
@@ -295,7 +286,7 @@ say_hello:
 	.cfi_endproc
 ```
 
-### Assemblage :
+### 5 - Assemblage :
 
 ```
 $ as -o hello2.o hello2.s
@@ -306,12 +297,10 @@ $ file say_hello.o
 say_hello.o: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV), not stripped
 ```
 
-### Édition des liens :
+### 6 - Édition des liens :
 
 ```
 $ gcc -o hello2 hello2.o say_hello.o
-fab@cdev:~/code/helloworld$ ./hello2
-Bonjour monde!
 ```
 
 ```
@@ -322,7 +311,17 @@ $ gcc <fichier1.o> <fichier2.o> <fichiern.o> -o <executable>
 // ou avec bibliothèque(s) ici m pour math :
 $ gcc -lm <fichier1.o> <fichier2.o> <fichiern.o> -o <executable>
 ```
-### En conservant les étapes intermédiaires:
+
+### 7 - Execution :
+
+```
+$ ./hello2
+Bonjour monde!
+```
+
+### 8 - En conservant les étapes intermédiaires:
+
+Compilation en une seule étape en conservant les étapes intermédiaires:
 
 ```bash
 $ gcc -v -save-temps hello2.c say_hello.c -o hello2
@@ -340,7 +339,7 @@ $ ls -ltr
 -rwxrwxr-x 1 fab fab 16768 Sep 11 17:45 hello2
 ```
 
-### Build :
+### 9 - Build :
 
 Pour un projet contenant plusieurs fichiers sources, nous utilisons l'outil GNU make pour produire l'exécutable à partir des fichiers sources.
 
@@ -349,7 +348,7 @@ $ make
 $ make clean
 ```
 
-### Questions de révision
+### 10 - Questions de révision
 
 L’idée de base des questions de révision est de vous donner une chance de voir si vous avez identifié et
 compris les points clés de cette partie.
@@ -376,38 +375,27 @@ compris les points clés de cette partie.
 
 ### Conclusion
 
-Qu’y a-t-il de si important à propos du programme “Hello world !”? Son objectif était de vous
-familiariser avec les outils de base utilisés en programmation.
+Qu’y a-t-il de si important à propos du programme “Hello world !”? Son objectif était de vous familiariser avec les outils de base utilisés en programmation.
 
-Retenez cette règle : il faut toujours prendre un exemple extrêmement simple (comme “Hello world”)
-à chaque fois que l’on découvre un nouvel outil. Cela permet de diviser l’apprentissage en deux parties :
-on commence par apprendre le fonctionnement de base de nos outils avec un programme élémentaire
-puis on peut passer à des programmes plus compliqués sans être distraits par ces outils. Découvrir les
-outils et le langage simultanément est beaucoup plus difficile que de le faire un après l’autre.
+Retenez cette règle : il faut toujours prendre un exemple extrêmement simple (comme “Hello world”) à chaque fois que l’on découvre un nouvel outil. Cela permet de diviser l’apprentissage en deux parties :
+- on commence par apprendre le fonctionnement de base de nos outils avec un programme élémentaire 
+- puis on peut passer à des programmes plus compliqués sans être distraits par ces outils. 
 
-_Conclusion : cette approche consistant à simplifier l’apprentissage d’une tâche complexe en la décom-
-posant en une suite d’étapes plus petites (et donc plus faicles à gérer) ne s’applique pas uniquement à la
-programmation et aux ordinateurs. Elle est courante et utile dans la plupart des domaines de l’existence,
-notamment dans ceux qui impliquent une compétence pratique._
+Découvrir les outils et le langage simultanément est beaucoup plus difficile que de le faire un après l’autre.
+
+_Conclusion : cette approche consistant à simplifier l’apprentissage d’une tâche complexe en la décomposant en une suite d’étapes plus petites (et donc plus faicles à gérer) ne s’applique pas uniquement à la programmation et aux ordinateurs. Elle est courante et utile dans la plupart des domaines de l’existence, notamment dans ceux qui impliquent une compétence pratique._
 
 ```
 Descartes (mathématicien, physicien et philosophe français) dans le Discours de la méthode :
-« diviser chacune des difficultés que j’examinerais, en autant de parcelles qu’il se pourrait,
-et qu’il serait requis pour les mieux résoudre. »
-« conduire par ordre mes pensées, en commençant par les objets les plus simples et les
-plus aisés à connaître, pour monter peu à peu comme par degrés jusques à la connaissance
-des plus composés ... »
+« diviser chacune des difficultés que j’examinerais, en autant de parcelles qu’il se pourrait, et qu’il serait requis pour les mieux résoudre. »
+« conduire par ordre mes pensées, en commençant par les objets les plus simples et les plus aisés à connaître, pour monter peu à peu comme par degrés jusques à la connaissance des plus composés ... »
 ```
 
 ## Objets, types et valeurs
 
-Pour pouvoir lire quelque chose, il faut dire où le placer ensuite. Autrement dit, il faut un “endroit”
-dans la mémoire de l’ordinateur où placer les données lues. On appelle cet “endroit” un **objet**.
+Pour pouvoir lire quelque chose, il faut dire où le placer ensuite. Autrement dit, il faut un “endroit” dans la mémoire de l’ordinateur où placer les données lues. On appelle cet “endroit” un **objet**.
 
-Un objet est une région de la mémoire, dotée d’un **type** qui spécifie quelle sorte d’information on
-peut y placer. Un objet nommé s’appelle une **variable**. _Il est fondamentalement impossible de faire quoi que ce soit avec un ordinateur sans stocker des
-données en mémoire (on parle ici de la RAM)._
-
+Un objet est une région de la mémoire, dotée d’un **type** qui spécifie quelle sorte d’information on peut y placer. Un objet nommé s’appelle une **variable**. _Il est fondamentalement impossible de faire quoi que ce soit avec un ordinateur sans stocker des données en mémoire (on parle ici de la RAM)._
 
 Exemples :
 - les **entiers** sont stockés dans des objets de type int
@@ -415,11 +403,8 @@ Exemples :
 - etc ..
 
 
-
-
 Une définition peut (et généralement doit) fournir une valeur initiale. Trop de programmes informatiques ont connu des bugs dûs à des oublis d’initialisation de variables... 
-Le compilateur se souvient du type de chaque variable et s’assure que vous l’utilisez comme il est
-spécifié dans sa définition.
+Le compilateur se souvient du type de chaque variable et s’assure que vous l’utilisez comme il est spécifié dans sa définition.
 
 ```C
 #include <stdbool.h> /* pour le type bool en C */
@@ -445,36 +430,40 @@ int main()
 ## Types de variables
 
 - Les types entiers :
-  
-```
-- bool : false ou true −→ booléen
-- unsigned char: 0 à 255 −→ 1 octet ou 8 bits
-- [signed] char: -128 à 127 −→ 1 octet mais en entier relatif
-- unsigned short [int]: 0 à 65535 −→ 2 octets ou 16 bits
-- [signed] short [int]: -32768 à +32767 −→ 2 octets mais en entier relatif
-- unsigned int: 0 à 4.295e9 −→ 4 octets
-- [signed] int: -2.147e9 à +2.147e9 −→ 4 octets mais en entier relatif
-- unsigned long [int]: 0 à 4.295e9 −→ entier sur 4 octets ou plus ; sur PC identique à "int"
-- [signed] long [int]: -2.147e9 à -2.147e9−→idem mais en entier relatif
-- unsigned long long [int]: 0 à 18.4e18 −→ sur 8 octets
-- [signed] long long [int]: -9.2e18 à -9.2e18 −→idem mais en entier relatif
-```
+
+
+Type | Valeurs | Commentaire
+---------|----------|---------
+ bool | false ou true | booléen
+ unsigned char | 0 à 255 | 1 octet ou 8 bits
+ [signed] char | -128 à 127 | 1 octet mais en entier relatif
+ unsigned short [int] | 0 à 65535 | 2 octets ou 16 bits
+ [signed] short [int] | -32768 à +32767 | 2 octets mais en entier relatif
+ unsigned int | 0 à 4.295e9 | 4 octets
+ [signed] int | -2.147e9 à +2.147e9 | 4 octets mais en entier relatif
+ unsigned long [int] | 0 à 4.295e9 | entier sur 4 octets ou plus ; sur PC identique à "int"
+ [signed] long [int] | -2.147e9 à -2.147e9 | idem mais en entier relatif
+ unsigned long long [int] | 0 à 18.4e18 | sur 8 octets
+ [signed] long long [int] | -9.2e18 à -9.2e18 | sur 8 octets mais en entier relatif
 
 - Les types à virgule flottante :
 
-```
-- float: environ 6 chiffres de précision et un exposant qui va jusqu’à ±10 ±^38 −→ Codage IEEE sur 4 octets
-- double: environ 10 chiffres de précision et un exposant qui va jusqu’à ±10 ±^308 −→ Codage IEEE sur 8 octets
-- long double −→ Codé sur 10 octets
-```
+Type | Précision | Format
+---------|----------|---------
+ float | environ 6 chiffres de précision et un exposant qui va jusqu’à ±10 ±^38 | Codage IEEE sur 4 octets
+ double | environ 10 chiffres de précision et un exposant qui va jusqu’à ±10 ±^308 | Codage IEEE sur 8 octets
+ long double |  | Codé sur 10 octets
 
 - Les constantes :
-  
-```
-- celles définies **pour le préprocesseur** : c’est simplement une **substitution syntaxique pure** . Il n’y a aucun typage de la constante.
-       #define PI 3.1415
 
-- celles définies **pour le compilateur** : c’est une **variable typée en lecture seule** , ce qui permet des contrôles lors de la compilation.
+- celles définies **pour le préprocesseur** : c’est simplement une **substitution syntaxique pure** . Il n’y a aucun typage de la constante.
+
+```C
+       #define PI 3.1415
+```
+
+- celles définies **pour le compilateur** : c’est une **variable typée en lecture seule**, ce qui permet des contrôles lors de la compilation.
+```C
        const double pi = 3.1415; // en C++ et en C ISO
 ```
 
@@ -505,7 +494,7 @@ Une énumération est un type de données dont les valeurs sont des constantes n
 typedef int entier;
 typedef float reel;
 
-typedef enum{FALSE,TRUE} booleen;
+typedef enum{FALSE, TRUE} booleen;
 
 enum couleur_carte {
     TREFLE = 1, /* un énumérateur */
@@ -536,8 +525,7 @@ int main()
 
 - Les pointeurs :
   
-Les pointeurs sont des **variables spéciales** permettant de **stocker une adresse** (pour la manipuler
-ensuite). L’adresse représente généralement l’ **emplacement mémoire d’une variable**. Comme la variable a un type, le pointeur qui stockera son adresse doit être du même type pour la manipuler convenablement.
+Les pointeurs sont des **variables spéciales** permettant de **stocker une adresse** (pour la manipuler ensuite). L’adresse représente généralement l’ **emplacement mémoire d’une variable**. Comme la variable a un type, le pointeur qui stockera son adresse doit être du même type pour la manipuler convenablement.
 Le type void* représentera un type générique de pointeur: en fait cela permet d'indiquer que l'on ne sait pas encore sur quel type il pointe.
 
 Utilisation des pointeurs :
@@ -562,7 +550,6 @@ int main()
 ```
 
 
-
 ## Nommer une variable
 
 Un nom de variable est un nom principal (surtout pas un verbe) suffisamment éloquent, éventuellement complété par :
@@ -574,19 +561,14 @@ Un nom de variable est un nom principal (surtout pas un verbe) suffisamment élo
 - Les lettres i, j, k utilisées seules sont usuellement admises pour les indices de boucles.
 - Un nom de variable doit être uniquement composé de lettres, de chiffres et de "souligné" (_). 
 - Les noms débutant par le caractère "souligné" (_) sont réservés au système, et à la bibliothèque C. Les noms débutants par un double "souligné" (__) sont réservés aux constantes symboliques privées (#define...) dans les fichiers d’en-tête (.h).
-- Il est déconseillé de différencier deux identificateurs uniquement par le type de lettre (minuscule/majuscule). Les identificateurs doivent se distinguer par au moins deux caractères, parmi les 12 premiers,
-car pour la plupart des compilateurs seuls les 12 premiers symboles d’un nom sont discriminants.
+- Il est déconseillé de différencier deux identificateurs uniquement par le type de lettre (minuscule/majuscule). Les identificateurs doivent se distinguer par au moins deux caractères, parmi les 12 premiers, car pour la plupart des compilateurs seuls les 12 premiers symboles d’un nom sont discriminants.
 - Les mots clés du langage sont interdits comme noms.
-- _l’objectif de respecter des règles de codage est d’augmenter la lisibilité des programmes en se
-rapprochant le plus possible d’expressions en langage naturel._
+- _l’objectif de respecter des règles de codage est d’augmenter la lisibilité des programmes en se rapprochant le plus possible d’expressions en langage naturel._
 
 ## Portée d’une variable
 
-La **portée** ( _scope_ ) d’un identifiant (variables, fonctions, ...) est l’étendue au sein de laquelle cet
-identifiant est lié. En C, la portée peut être **globale** (en dehors de tout bloc{}) ou **locale** (au bloc
-{}).
-Des variables déclarées dans des blocs différents peuvent porter le même nom. En cas d’homonymie, le
-compilateur fait une résolution au « plus proche » de l’identifiant.
+La **portée** ( _scope_ ) d’un identifiant (variables, fonctions, ...) est l’étendue au sein de laquelle cet identifiant est lié. En C, la portée peut être **globale** (en dehors de tout bloc{}) ou **locale** (au bloc {}).
+Des variables déclarées dans des blocs différents peuvent porter le même nom. En cas d’homonymie, le compilateur fait une résolution au « plus proche » de l’identifiant.
 
 ```C
 #include <stdio.h>
@@ -636,54 +618,46 @@ Les instructions principales sont :
 - l’instruction itérative (la boucle)
 - les branchements (sans condition) en effectuant un saut avec l’instruction goto
 
-Les instructions (ou bloc d’instruction) sont exécutées séquentiellement : cela désigne le fait de faire
-exécuter par la machine une instruction, puis une autre, etc, en séquence. Cette construction se distingue
-du fait d’exécuter en parallèle des instructions (cf. programmation concurrente ou multi-tâches).
+Les instructions (ou bloc d’instruction) sont exécutées séquentiellement : cela désigne le fait de faire exécuter par la machine une instruction, puis une autre, etc, en séquence. Cette construction se distingue du fait d’exécuter en parallèle des instructions (cf. programmation concurrente ou multi-tâches).
 
 ## Expressions
 
-La brique de base la plus élémentaire d’un programme est une **expression**. Une expression calcule
-une **valeur** à partir d’un certain nombre d’opérandes. Cela peut être une **valeur littérale** comme 10,
-’a’, 3.14, "rouge" ou le **nom d’une variable**.
+La brique de base la plus élémentaire d’un programme est une **expression**. Une expression calcule une **valeur** à partir d’un certain nombre d’opérandes. Cela peut être une **valeur littérale** comme 10, ’a’, 3.14, "rouge" ou le **nom d’une variable**.
 
 exemple: longueur = 40;
-- \<longueur\> ou lvalue (left value) : est un élément de syntaxe C pouvant être écrit à gauche d'un opérateur d'affectation (=). Une lvalue doit être un emplacement de stockage en mémoire d'un type précis et modifiable.
-- <40> or rvalue (right value) : une rvalue est un élément de syntaxe C pouvant être écrit à droite d'un opérateur d'affectation. une rvalue est une valeur d'un type précis mains qui n'a pas forcement de zone de stockage en mémoire. Cela peut être une valeur, une constante, une variable, une expression...
+- \<longueur\> ou **lvalue** (left value) : est un élément de syntaxe C pouvant être écrit à gauche d'un opérateur d'affectation (=). Une lvalue doit être un emplacement de stockage en mémoire d'un type précis et modifiable.
+- <40> or **rvalue** (right value) : une rvalue est un élément de syntaxe C pouvant être écrit à droite d'un opérateur d'affectation. une rvalue est une valeur d'un type précis mains qui n'a pas forcement de zone de stockage en mémoire. Cela peut être une valeur, une constante, une variable, une expression...
 
 On utilise aussi des opérateurs dans une instruction :
+
 ``` C
 // calcule une aire
 int longueur = 40;
 int largeur = 20;
 int aire = longueur * largeur; // * est l’opérateur de multiplication
 ```
+
 De manière générale, un programme informatique est constitué d’une suite d’instructions.
-Une instruction d’expression est une expression suivie d’un point-virgule (;). Le point-virgule (;)
-est un élément syntaxique permettant au compilateur de “comprendre” ce que l’on veut faire dans le
-code.
+Une instruction d’expression est une expression suivie d’un point-virgule (;). Le point-virgule (;) est un élément syntaxique permettant au compilateur de “comprendre” ce que l’on veut faire dans le code.
+
 Dans les programmes, il faut souvent choisir entre plusieurs possibilités. Le C propose plusieurs instructions conditionnelles : l’instruction if (choisir entre deux possibilités) ou l’instruction switch(choisir entre plusieurs possibilités).
+
 Tous les langages de programmation fournissent des moyens pratiques de faire quelque chose plusieurs fois (on parle de traitement itératif). On appelle cela une boucle ou une itération.
-Le C offre plusieurs instructions itératives : la boucle while(et sa variante do ... while)
-et la boucle for.
+Le C offre plusieurs instructions itératives : la boucle while (et sa variante do ... while) et la boucle for.
 
 ## Les opérateurs
 
-Il existe de nombreux opérateurs : les opérateurs arithmétiques ( +, -, *, / et % ), les opérateurs
-relationnels ( <, <=, >, >=, == et != ), les opérateurs logiques && (et), ||(ou) et !(non), les opérateurs
-bits à bits &(et), |(ou) et ~(non) ...
+Il existe de nombreux opérateurs : les opérateurs arithmétiques ( +, -, *, / et % ), les opérateurs relationnels ( <, <=, >, >=, == et != ), les opérateurs logiques && (et), ||(ou) et !(non), les opérateurs bits à bits &(et), |(ou) et ~(non) ...
 
 Les opérateurs arithmétiques et les opérateurs relationnels ne sont définis que pour des opérandes d’un même type parmi : int, long int (et leurs variantes non signées), float, double et long double.
 
-On peut tout de même constituer des expressions mixtes (opérandes de types différents) ou contenant
-des opérandes d’autres types (bool, char et short), grâce aux conversions (transtypage ou _cast_ ) implicites
-et explicites.
+On peut tout de même constituer des expressions mixtes (opérandes de types différents) ou contenant des opérandes d’autres types (bool, char et short), grâce aux conversions (transtypage ou _cast_ ) implicites et explicites.
 
-L’opérateur **modulo (%)** permet d’obtenir le reste d’une division. C’est un opérateur très utilisé
-notamment dans l’accès à un élément d’un tableau.
-Les **opérateurs logiques** &&(et), ||(ou) et !(non) acceptent n’importe quel opérande numérique
-(entier ou flottant) ou pointeur, en considérant que tout opérande de valeur non nulle correspond à VRAI
-(true). Les deux opérateurs && et || sont **"à court-circuit"** : le second opérande n’est évalué que si la
+L’opérateur **modulo (%)** permet d’obtenir le reste d’une division. C’est un opérateur très utilisé notamment dans l’accès à un élément d’un tableau.
+
+Les **opérateurs logiques** &&(et), ||(ou) et !(non) acceptent n’importe quel opérande numérique (entier ou flottant) ou pointeur, en considérant que tout opérande de valeur non nulle correspond à VRAI (true). Les deux opérateurs && et || sont **"à court-circuit"** : le second opérande n’est évalué que si la
 connaissance de sa valeur est indispensable.
+
 
 ```C
 int a = 0;
@@ -733,14 +707,8 @@ bb = 170 (0xAA) - !bb = 0 - ~bb = 4294967125 (0x55)
 Les opérateurs d’affectation ( =, +=, -=, *=, /=, %=, &=, ^=, |=, <<= et >>= ) nécessitent une lvalue pour l’opérande de gauche. L’affectation à la déclaration d’une variable est appelée " **déclaration avec initialisation** ", par exemple : int a = 5; déclare a et l’initialise avec la valeur entière 5. Ce n’est
 donc pas le même opérateur que l’affectation.
 
-Les opérations arithmétiques sur les pointeurs sont bien évidemment réalisées sur les adresses contenues
-dans les variables pointeurs. Le type du pointeur a une influence importante sur l’opération. Supposons
-un tableau t de 10 entiers (int) initialisés avec des valeurs croissantes de 0 à 9. Si on crée un pointeur
-ptr sur un entier (int) et qu’on l’initialise avec l’adresse d’une case de ce tableau, on pourra alors se
-déplacer avec ce pointeur sur les cases de ce tableau. Comme ptr pointe sur des entiers (c’est son type),
-son adresse s’ajustera d’un décalage du nombre d’octets représentant la taille d’un entier (int). Par
-exemple, une incrémentation de l’adresse du pointeur correspondra à une opération +4 (octets) si la
-taille d’un int est de 4 octets!
+Les opérations arithmétiques sur les pointeurs sont bien évidemment réalisées sur les adresses contenues dans les variables pointeurs. Le type du pointeur a une influence importante sur l’opération. Supposons un tableau t de 10 entiers (int) initialisés avec des valeurs croissantes de 0 à 9. Si on crée un pointeur
+ptr sur un entier (int) et qu’on l’initialise avec l’adresse d’une case de ce tableau, on pourra alors se déplacer avec ce pointeur sur les cases de ce tableau. Comme ptr pointe sur des entiers (c’est son type), son adresse s’ajustera d’un décalage du nombre d’octets représentant la taille d’un entier (int). Par exemple, une incrémentation de l’adresse du pointeur correspondra à une opération +4 (octets) si la taille d’un int est de 4 octets!
 
 ```C
 int t[10] = { 0,1,2,3,4,5,6,7,8,9 };
@@ -757,10 +725,8 @@ ptr -= 4; // en fait je recule de 4 int soit 4*4 octets pour la valeur de l’ad
 printf("Maintenant, je pointe sur la case : %d (%p)\n", *ptr, ptr); // Maintenant, je pointe sur la case : 2 (0xbf8d87ac)
 ```
 
-Les **opérateurs unaires** (à une seule opérande) d’incrémentation (++) et de décrémentation (––)
-agissent sur la valeur de leur unique opérande (qui doit être une **lvalue** ) et fournissent la valeur après
-modification lorsqu’ils sont placés à gauche (comme dans ++n) ou avant modification lorsqu’ils sont
-placés à droite (comme dans n––). i++ est (à première vue) équivalent à i = i + 1. Mais i++ est une _right-value_ donc ...
+Les **opérateurs unaires** (à une seule opérande) d’incrémentation (++) et de décrémentation (--) agissent sur la valeur de leur unique opérande (qui doit être une **lvalue** ) et fournissent la valeur après modification lorsqu’ils sont placés à gauche (comme dans ++n) ou avant modification lorsqu’ils sont
+placés à droite (comme dans n--). i++ est (à première vue) équivalent à i = i + 1. Mais i++ est une _right-value_ donc ...
 
 ```C
 int i = 10;
@@ -775,7 +741,8 @@ printf("j = %d\n", j); // Affiche : j = 10
 L’ **opérateur ternaire** ? ressemble au if(...) {...} else {...} mais joue un rôle de _right-value_ et pas de simple instruction. La syntaxe est la suivante :(A?B:C) prend la valeur de l’expression B si l’expression A est vraie, sinon la valeur de l’expression C.
 
 ```C
-int age = 1; int parite; /* un booléen */
+int age = 1; 
+int parite; /* un booléen */
 
 printf("J’ai %d an%c\n", age, age > 1? ’s’ : ’’); // J’ai 1 an
 printf("Je suis %s\n", age >= 18? "majeur" : "mineur"); // Je suis mineur
@@ -792,11 +759,11 @@ printf("Parité = %d\n", parite); // Parité = 1
 Les opérateurs ont une priorité entre eux comme pour l’addition et la multiplication en mathématique.
 Liste des opérateurs du plus prioritaire au moins prioritaire :
 - . -> [] (référence et sélection)()(appel de fonction)()(parenthèses)sizeof()
-- ++ ~ (inverseur bit à bit)!(inverseur logique)-(unaire)&(prise d’adresse)*(indirection)
+- ++(unaire) ~(inverseur bit à bit) !(inverseur logique) --(unaire) &(prise d’adresse) *(indirection)
 - () (conversion de type)
 - \* / % (multiplication, division, modulo)
 - \+ - (addition et soustraction)
-- « » (décalages et envoi sur flots)
+- << >> (décalages et envoi sur flots)
 - < <= > >= (comparaisons)
 - == != (comparaisons)
 - & (ET bit à bit)
@@ -814,18 +781,14 @@ Quelques exemples :
 1. y = (x+5) est équivalent à : y = x+5 car l’opérateur + est prioritaire sur l’opérateur d’affectation =.
 2. (i++) * (n+p) est équivalent à : i++ * (n+p) car l’opérateur ++ est prioritaire sur *. En revanche,     * est prioritaire sur +, de sorte qu’on ne peut éliminer les dernières parenthèses.
 3. moyenne = 5 + 10 + 15 / 3 donnera 20 ( / est plus prioritaire que le + ). Il faut alors imposer l’ordre en l’indiquant avec des parenthèses : moyenne = (5 + 10 + 15) / 3
-4. _Important :_ Si deux opérateurs possèdent la même priorité, C exécutera les opérations de la gauche
-    vers la droite (sauf pour les opérateurs suivants où l’ordre est de la droite vers la gauche : ++ ~
-    (inverseur bit à bit) !(inverseur logique) -(unaire) &(prise d’adresse) *(indirection) (? :) et = *= /= %= += = «= »= &= |= ~=).
+4. _Important :_ Si deux opérateurs possèdent la même priorité, C exécutera les opérations de la gauche vers la droite (sauf pour les opérateurs suivants où l’ordre est de la droite vers la gauche : ++(unaire) ~(inverseur bit à bit) !(inverseur logique) --(unaire) &(prise d’adresse) *(indirection) (? :) et = *= /= %= += = «= »= &= |= ~=).
 5. L’ordre des opérateurs n’est donc pas innocent. En effet :3/6*6 donnera 0 alors que 3*6/6 donnera 3!
    
 Conclusion : comme il est difficile de se rappeler de l’ensemble des priorités des opérateurs, le programmeur préfère coder explicitement en utilisant des parenthèses afin de s’éviter des surprises. Cela améliore aussi la lisibilité.
 
 ## Conditionner une action
 
-La célèbre attraction du train fou est interdite aux moins de 10 ans. On souhaite écrire un programme
-qui demande à l’utilisateur son âge et qui, si la personne a moins de 10 ans, affiche le texte « Accès
-interdit » ; 
+La célèbre attraction du train fou est interdite aux moins de 10 ans. On souhaite écrire un programme qui demande à l’utilisateur son âge et qui, si la personne a moins de 10 ans, affiche le texte « Accès interdit » ; 
 ce qui peut se rédiger comme cela en pseudo code:
 ```
 Variable age : Entier
@@ -836,15 +799,18 @@ Si age < 10
 ```
 
 Cela se traduit en C:
+
 ```C
 int age;
+
 scanf("%d", &age);
+
 if (age < 10) {
     printf("Accès interdit\n");
     }
 ```
 
-```
+```bash
 $ ./tester-age
 8
 Accès interdit
@@ -852,20 +818,28 @@ $ ./tester-age
 13
 ```
 
-On écrit donc le mot-clef if, la traduction en anglais de « **si** », puis on met entre parenthèses la
-condition à tester, à savoir age < 10. On n’oublie pas de de mettre des accolades.
+On écrit donc le mot-clef if, la traduction en anglais de « **si** », puis on met entre parenthèses la condition à tester, à savoir age < 10. On n’oublie pas de de mettre des accolades.
 
-Pour exprimer la condition du « si » dans le programme, on a utilisé le symbole <, qui est l’opérateur
-de comparaison strictement inférieur. De manière symétrique, l’opérateur > permet de tester si un nombre
-est strictement supérieur à un autre. Lorsqu’on veut tester si un nombre est inférieur ou égal à un
-autre, on utilise le symbole <=. De manière symétrique, le symbole >= permet de tester si un nombre est
-supérieur ou égal à un autre.
-Pour finir, le symbole == permet de tester l’égalité et la différence avec !=. Evidemment, il ne faut surtout pas confondre avec l’opérateur = qui permet d’effectuer une affectation.
+Les opérateurs de comparaison:
+
+
+Opérateur | Signification 
+---------|----------
+ < | strictement inférieur 
+ \> | strictement supérieur 
+ <= | inférieur ou égal 
+ \>= | supérieur ou égal 
+ == | égalité 
+ != | différence 
+
+Evidemment, il ne faut surtout pas confondre avec l’opérateur = qui permet d’effectuer une affectation.
 
 Par exemple, le code suivant permet de tester si la température de l’eau a atteint 100 degrés :
 ```C
 int temperature;
+
 scanf("%d", &temperature);
+
 if (temperature >= 100) {
     printf("L’eau bout !");
     }
@@ -891,8 +865,7 @@ int main()
 }
 ```
 
-En fait cet exemple semble seulement fonctionner comme annoncé. Ce programme dit que si ce n’est pas une conversion en _inch_ c’est forcément une conversion en _cm_. Il y a ici une dérive sur le comportement
-de ce programme si l’utilisateur tape ’f’ car il convertira des _cm_ en _inches_ ce qui n’est probablement pas
+En fait cet exemple semble seulement fonctionner comme annoncé. Ce programme dit que si ce n’est pas une conversion en _inch_ c’est forcément une conversion en _cm_. Il y a ici une dérive sur le comportement de ce programme si l’utilisateur tape ’f’ car il convertira des _cm_ en _inches_ ce qui n’est probablement pas
 ce que l’utilisateur désirait. Un programme doit se comporter de manière sensée même si les utilisateurs ne le sont pas.
 
 
@@ -963,14 +936,11 @@ if (estPasCher) {
     }
 ```
 
-La variable estPasCher est appelée une **variable booléenne** ou un **booléen** de type bool car elle
-ne peut être que vraie ou fausse, ce qui correspond en C aux valeurs true(pour vrai) et false(pour
-faux).
+La variable estPasCher est appelée une **variable booléenne** ou un **booléen** de type bool car elle ne peut être que vraie ou fausse, ce qui correspond en C aux valeurs true(pour vrai) et false(pour faux).
 
 _N’oublier pas que le type bool est natif en C++. Par contre en C, il faut inclure stdbool.h pour pouvoir l’utiliser._
 
-Il est bien sûr possible d’utiliser des opérateurs booléens (les opérateurs && et || ) pour combiner des
-conditions et les valeurs booléennes sont également utilisables.
+Il est bien sûr possible d’utiliser des opérateurs booléens (les opérateurs && et || ) pour combiner des conditions et les valeurs booléennes sont également utilisables.
 
 
 Voici quelques extraits de code à titre d’exemple :
@@ -997,9 +967,7 @@ while (nbPersonnes <= nbMax && temperature <= 45) {
 
 ## Itérer une action
 
-Le premier programme jamais exécuté sur un ordinateur à programme stocké en mémoire (l’EDSAC)
-est un exemple d’itération. Il a été écrit et exécuté par David Wheeler au laboratoire informatique de
-Cambridge le 6 mai 1949 pour calculer et afficher une simple liste de carrés comme ceci :
+Le premier programme jamais exécuté sur un ordinateur à programme stocké en mémoire (l’EDSAC) est un exemple d’itération. Il a été écrit et exécuté par David Wheeler au laboratoire informatique de Cambridge le 6 mai 1949 pour calculer et afficher une simple liste de carrés comme ceci :
 ```
 0 0
 1 1
@@ -1022,7 +990,7 @@ int main()
 
     // tant que i est inférieur strict à 100 : on s’arrête quand i a atteint la valeur 100
     while (i < 100) {
-        printf( "%d\t%d\n", i, i * i ); // affiche i et son carré séparés par unetabulation
+        printf( "%d\t%d\n", i, i * i ); // affiche i et son carré séparés par une tabulation
         ++i; // on incrémente le nombre et on recommence
     }
 
@@ -1030,8 +998,7 @@ int main()
 }
 ```
 
-Les accolades {} délimitent le **corps de la boucle** : c’est-à-dire le bloc d’instructions à répéter. La
-condition pour la répétition est exprimée directement dans le while. La boucle while s’exécutera **0 ou n fois**.
+Les accolades {} délimitent le **corps de la boucle** : c’est-à-dire le bloc d’instructions à répéter. La condition pour la répétition est exprimée directement dans le while. La boucle while s’exécutera **0 ou n fois**.
 
 Il existe aussi une boucle **do ... while** à la différence près que cette boucle sera exécutée **au moins une fois**.
 
@@ -1045,17 +1012,13 @@ while (i < 100); // tant que i est inférieur strict à 100
 ```
 
 Donc écrire une boucle est simple. Mais cela peut s’avérer dangereux :
-- Que se passerait-il si i n’était pas initialisé à 0? Voilà une première raison qui démontre que les     variables non initialisées sont une source d’erreurs courante.
-- Que se passerait-il si on oubliait l’instruction ++i? On obtient une boucle infinie (un programme qui
-    ne “répond” plus). Il faut éviter au maximum d’écrire des boucles infinies. 
+- Que se passerait-il si i n’était pas initialisé à 0? Voilà une première raison qui démontre que les variables non initialisées sont une source d’erreurs courante.
+- Que se passerait-il si on oubliait l’instruction ++i? On obtient une boucle infinie (un programme qui ne “répond” plus). Il faut éviter au maximum d’écrire des boucles infinies. 
 
-Itérer sur une suite de nombres est si courant en C/C++ que l’on dispose d’une instruction spéciale
-pour le faire. C’est l’instruction for qui très semblable à while sauf que la gestion de la variable de
-contrôle de boucle est concentrée sur une seule ligne plus facile à lire et à comprendre. Il existe toujours
+Itérer sur une suite de nombres est si courant en C/C++ que l’on dispose d’une instruction spéciale pour le faire. C’est l’instruction for qui très semblable à while sauf que la gestion de la variable de contrôle de boucle est concentrée sur une seule ligne plus facile à lire et à comprendre. Il existe toujours
 une instruction while équivalente à une instruction for.
 
-L’instruction for concentre : **une zone d’initialisation, une zone de condition et une zone
-d’opération d’incrémentation**. N’utilisez whileque lorsque ce n’est pas le cas.
+L’instruction for concentre : **une zone d’initialisation, une zone de condition et une zone d’opération d’incrémentation**. N’utilisez while que lorsque ce n’est pas le cas.
 
 Le premier programme jamais écrit (version for):
 ```C
@@ -1079,42 +1042,31 @@ int main()
 
 ```
 
-+ Ici, on utilise la fonction puissance (pow) de la bibliothèque mathématique. Pour cela, il faut inclure
-math.h en C puis effectuer l’édition des liens avec l’option-lm (ce qui est fait par défaut maintenant).
++ Ici, on utilise la fonction puissance (pow) de la bibliothèque mathématique. Pour cela, il faut inclure math.h en C puis effectuer l’édition des liens avec l’option -lm (ce qui est fait par défaut maintenant).
 
 ## La conversion de type (transtypage)
 
-Le compilateur ne peut appliquer des opérateurs qu’à des opérandes de même type. Par exemple, il
-n’existe pas d’addition pour : 2 + 1.5 car 2 est un entier et 1.5 est un flottant. Il faudra donc réaliser
-une conversion de type ( _cast_ ). De la même manière, on ne pourra pas affecter une variable avec un type
-différent. Une conversion ou promotion de type est un transtypage ( _cast_ ).
-
+Le compilateur ne peut appliquer des opérateurs qu’à des opérandes de même type. Par exemple, il n’existe pas d’addition pour : 2 + 1.5 car 2 est un entier et 1.5 est un flottant. Il faudra donc réaliser une conversion de type ( _cast_ ). De la même manière, on ne pourra pas affecter une variable avec un type différent. Une conversion ou promotion de type est un transtypage ( _cast_ ).
 
 Il existe deux types de transtypages :
-- sans perte : int −→ float (2 devient 2.0)
-- avec perte : float −→ int (1.5 devient 1)
+- sans perte : int → float (2 devient 2.0)
+- avec perte : float → int (1.5 devient 1)
 
-Les conversions peuvent être automatiques ou implicites (sans perte) par le compilateur ou forcée ou
-explicites (avec ou sans perte) par le programmeur.
+Les conversions peuvent être automatiques ou implicites (sans perte) par le compilateur ou forcée ou explicites (avec ou sans perte) par le programmeur.
 
-Les conversions d’ajustement de type automatique suivant la hiérarchie ci-dessous sont réalisées **sans
-perte** :
+Les conversions d’ajustement de type automatique suivant la hiérarchie ci-dessous sont réalisées **sans perte** :
 
-1. char−→short int−→int−→long−→float−→double−→long double
-2. unsigned int−→unsigned long−→float−→double−→long double
+1. char → short int → int → long → float → double → long double
+2. unsigned int → unsigned long → float → double → long double
 
 Une conversion implicite (automatique) peut donner lieu à un warning de la part du compilateur.
 
 Lorsqu’elle est forçée ou explicite, on utilise l’ **opérateur de** **_cast_** en précisant le type entre parenthèses devant la variable à convertir (C/C++) :(float)a qui permet de forcer la variable a en float.
 
-Les conversions forcées peuvent être des **conversions dégradantes (avec perte)**. Par exemple :
-int b = (int)2.5;. En effet, le _cast_ (int)b donnera 2 avec une perte de la partie décimale. Cela peut
-être un source d’erreur ( _bug_ ). Le cas le plus « classique » est 1 / 2 qui donne 0 et non pas 0.5, car 1 et
+Les conversions forcées peuvent être des **conversions dégradantes (avec perte)**. Par exemple : int b = (int)2.5;. En effet, le _cast_ (int)b donnera 2 avec une perte de la partie décimale. Cela peut être un source d’erreur ( _bug_ ). Le cas le plus « classique » est 1 / 2 qui donne 0 et non pas 0.5, car 1 et
 2 sont des entiers ce qui provoque une division entière.
 
-La conversion peut être forcée par la lvalue: les opérateurs d'affectation (=, -=, +=...), appliqués à
-des valeurs de type numérique, provoquent la conversion de leur opérande de droite dans le type de leur 
-opérande de gauche. Cette conversion forcée peut être "dégradante" (avec perte).
+La conversion peut être forcée par la lvalue: les opérateurs d'affectation (=, -=, +=...), appliqués à des valeurs de type numérique, provoquent la conversion de leur opérande de droite dans le type de leur opérande de gauche. Cette conversion forcée peut être "dégradante" (avec perte).
 
 ## L’allocation dynamique de mémoire
 
@@ -1137,10 +1089,8 @@ En C/C++, la mémoire pour stocker des variables est organisée en deux catégor
 
 _LIFO_, _Last In First Out_, _Dernier Entré - Premier  Sorti_ :. Il faut voir cet espace mémoire comme une pile d’assiettes où on a le droit d’empiler/dépiler qu’une seule assiette à la fois. Par contre on a le droit d’empiler des assiettes de taille différente. Lorsque l’on ajoute des assiettes on les empile par le haut, les unes au dessus des autres. Quand on les "dépile" on le fait en commençant aussi par le haut, soit par la dernière posée. Lorsqu’une valeur est dépilée elle est effacée de la mémoire.
 
-Fuite de mémoire: L'allocation dynamique dans le tas ne permet pas la désallocation automatique. Chaque allo cation avec malloc() doit impérativement être libérée(détruite) avec free() sous peine de créer une fuite de mémoire. La fuite de mémoire est une zone mémoire qui a été allouée dans le tas par un programme qui a omis de la désallouer avant de se terminer. Cela rend la zone inaccessible à toute application y compris le système d'exploitation jusqu'au redémarrage du système. Si ce phénomène se produit trop fréquemment la mémoire se remplit de fuites et le système finit par tomber faute de mémoire.
+Fuite de mémoire: L'allocation dynamique dans le tas ne permet pas la désallocation automatique. Chaque allocation avec malloc() doit impérativement être libérée(détruite) avec free() sous peine de créer une fuite de mémoire. La fuite de mémoire est une zone mémoire qui a été allouée dans le tas par un programme qui a omis de la désallouer avant de se terminer. Cela rend la zone inaccessible à toute application y compris le système d'exploitation jusqu'au redémarrage du système. Si ce phénomène se produit trop fréquemment la mémoire se remplit de fuites et le système finit par tomber faute de mémoire.
 
-
-!!!! Exemple à refaire avec malloc et free
 
 Exemple d’allocation dynamique en C++:
 ```C
@@ -1151,28 +1101,28 @@ using namespace std;
 
 int main ()
 {
-int * p1 = new int ; // pointeur sur un entier
+    int * p1 = new int ; // pointeur sur un entier
 
-*p1 = 1; // ecrit 1 dans la zone mémoire allouée
-cout << *p1 << endl; // lit et affiche le contenu de la zone mémoire allouée
-delete p1; // libère la zone mémoire allouée
-int * p2 = new int [5]; // alloue un tableau de 5 entiers en mémoire
-// initialise le tableau avec des 0 (cf. la fonction memset)
-for ( int i=0;i<5;i++)
-{
-*(p2 + i) = 0; // les 2 écritures sont possibles
-p2[i] = 0; // identique à la ligne précèdente
-cout << "p2[" << i << "] = " << p2[i] << endl;
-}
-delete [] p2; // libère la mémoire allouée
-return 0;
+    *p1 = 1; // ecrit 1 dans la zone mémoire allouée
+    cout << *p1 << endl; // lit et affiche le contenu de la zone mémoire allouée
+    delete p1; // libère la zone mémoire allouée
+
+    int * p2 = new int [5]; // alloue un tableau de 5 entiers en mémoire
+    // initialise le tableau avec des 0 (cf. la fonction memset)
+    for ( int i=0; i<5; i++) {
+        *(p2 + i) = 0; // les 2 écritures sont possibles
+        p2[i] = 0; // identique à la ligne précèdente
+        cout << "p2[" << i << "] = " << p2[i] << endl;
+    }
+    delete [] p2; // libère la mémoire allouée
+
+    return 0;
 }
 ```
 
 ## Questions de révision
 
-L’idée de base des questions de révision est de vous donner une chance de voir si vous avez identifié et
-compris les points clés de cette partie.
+L’idée de base des questions de révision est de vous donner une chance de voir si vous avez identifié et compris les points clés de cette partie.
 
 **Question 11.** Qu’est-ce qu’une variable?
 
@@ -1196,34 +1146,24 @@ compris les points clés de cette partie.
 
 ### Conclusion
 
-Parce qu’il est clair que vous débutez à peine votre carrière de programmeur, n’oubliez pas qu’écrire
-de bons programmes, c’est écrire des programmes corrects, simples et efficaces.
+Parce qu’il est clair que vous débutez à peine votre carrière de programmeur, n’oubliez pas qu’écrire de bons programmes, c’est écrire des programmes corrects, simples et efficaces.
 
 ```
 Rob Pike (ancien chercheur des Laboratoires Bell et maintenant ingénieur chez Google) :
-«Règle n°4 : Les algorithmes élégants comportent plus d’erreurs que ceux qui sont plus
-simples, et ils sont plus difficiles à appliquer. Utilisez des algorithmes simples ainsi que des
-structures de données simples.»
+«Règle n°4 : Les algorithmes élégants comportent plus d’erreurs que ceux qui sont plus simples, et ils sont plus difficiles à appliquer. Utilisez des algorithmes simples ainsi que des structures de données simples.»
 ```
-Cette règle n°4 est une des instances de la philosophie de conception KISS ( _Keep it Simple, Stupid_
-dans le sens de « Ne complique pas les choses ») ou Principe KISS, dont la ligne directrice de conception
-préconise de rechercher la simplicité dans la conception et que toute complexité non nécessaire devrait
+Cette règle n°4 est une des instances de la philosophie de conception KISS ( _Keep it Simple, Stupid_ dans le sens de « Ne complique pas les choses ») ou Principe KISS, dont la ligne directrice de conception préconise de rechercher la simplicité dans la conception et que toute complexité non nécessaire devrait
 être évitée.
 
 ## Les types dérivés
 
-Dans de très nombreuses situations, les types de base s’avèrent insuffisants pour permettre de traiter
-un problème : il peut être nécessaire, par exemple, de stocker un certain nombre de valeurs en mémoire
-afin que des traitements similaires leurs soient appliqués.
+Dans de très nombreuses situations, les types de base s’avèrent insuffisants pour permettre de traiter un problème : il peut être nécessaire, par exemple, de stocker un certain nombre de valeurs en mémoire afin que des traitements similaires leurs soient appliqués.
 
-Dans ce cas, il est impensable d’avoir recours à de simples variables car tout traitement itératif serait
-inapplicable. D’autre part, il s’avère intéressant de pouvoir regrouper ensemble plusieurs variables afin de
-les manipuler comme un tout.
+Dans ce cas, il est impensable d’avoir recours à de simples variables car tout traitement itératif serait inapplicable. D’autre part, il s’avère intéressant de pouvoir regrouper ensemble plusieurs variables afin de les manipuler comme un tout.
 
 Pour répondre à tous ces besoins, le langage C/C++ comporte la notion de **type agrégé** en utilisant :
 les **tableaux**. Il existe aussi les **structures** , les **unions** et les **énumérations**.
-Les tableaux sont des **conteneurs** ( _container_ ), c’est-à-dire est un **objet qui contient d’autres
-objets**.
+Les tableaux sont des **conteneurs** ( _container_ ), c’est-à-dire est un **objet qui contient d’autres objets**.
 
 ```C
 int tab[5];     // Déclare un tableau de 5 entiers, avec un index de 0 à 4
@@ -1233,12 +1173,9 @@ int tab[5];     // Déclare un tableau de 5 entiers, avec un index de 0 à 4
 
 En C/C++, les **chaînes de caractères** sont délimitées par des double quote ("). "Hello world !\n" est donc une chaîne de caractères. Le code \n est un “caractère spécial” indiquant le passage à une nouvelle ligne ( _newline_ ).
 
-Les **chaînes de caractères** contiennent donc des caractères! En C/C++, ils sont codés par défaut en
-ASCII (sur 8 bits soit un octet). Un **caractère** est délimité par des guillements simples (’). En C/C++,
-un **caractères** est stocké dans une variable de type char.
+Les **chaînes de caractères** contiennent donc des caractères! En C/C++, ils sont codés par défaut en ASCII (sur 8 bits soit un octet). Un **caractère** est délimité par des guillements simples (’). En C/C++, un **caractères** est stocké dans une variable de type char.
 
-Une **chaîne de caractères** est délimitée par un caracère spécial de **fin de chaîne** : le caractère nul
-qui a pour valeur 0 ou ’\0’. Il est automatiquement ajouté lorsqu’on utilise la notation ("").
+Une **chaîne de caractères** est délimitée par un caracère spécial de **fin de chaîne** : le caractère nul qui a pour valeur 0 ou ’\0’. Il est automatiquement ajouté lorsqu’on utilise la notation ("").
 
 ```bash
 $ man ascii
@@ -1285,17 +1222,17 @@ strcpy(fils, nom); // copie nom dans fils
 strcat(fils, " Junior"); // concatène deux chaînes
 
 // comparaison de chaînes
-if (strcmp(nom,fils) == 0) 
+if (strcmp(nom, fils) == 0) 
     printf("Les deux chaînes sont identiques.\n");
 ```
 
 ### Lecture de chaînes de caractères
 
-La lecture des chaînes de caractère ( scanf()enC/C++ ) se termine sur ce qu’on appelle un espace blanc ( _whitespace_ ), c’est-à-dire le caractère espace, une tabulation ou un caractère de retour à la ligne (généralement la touche Enter ). Notez que les espaces sont ignorés par défaut.
+La lecture des chaînes de caractère ( scanf() en C/C++ ) se termine sur ce qu’on appelle un espace blanc ( _whitespace_ ), c’est-à-dire le caractère espace, une tabulation ou un caractère de retour à la ligne (généralement la touche Enter ). Notez que les espaces sont ignorés par défaut.
 
 ```C
 char msg[16];
-scanf("%s", &msg[0]); // %s pour une chaîne mais attention au dépassement de taille (on peut uliser fgets)
+scanf("%s", &msg[0]); // %s pour une chaîne mais attention au dépassement de taille (on peut utiliser fgets)
 scanf("%15s", &msg[0]); // on peut limiter le nombre de caractères saisis (ici 15+1 = 16)
 
 // si votre saisie comporte des espaces, vous pouvez utiliser :
@@ -1307,7 +1244,7 @@ scanf("%15[^\n]s", &msg[0]);
 fgets(&msg[0], 16, stdin); // attention fgets stocke le retour à ligne
 ```
 
-- _Sous Linux, vous pouvez indiquer la fin d’un flux en combinant les touches_ Ctrl _+_ d _qui indiquera qu’il n’y a plus de saisie. Vous pouvez aussi stopper le programme avec_ Ctrl _+_ z _ou l’interrompre avec_ Ctrl _+_ c.
+_Sous Linux, vous pouvez indiquer la fin d’un flux en combinant les touches_ Ctrl _+_ d _qui indiquera qu’il n’y a plus de saisie. Vous pouvez aussi stopper le programme avec_ Ctrl _+_ z _ou l’interrompre avec_ Ctrl _+_ c.
 Les caractères tapés ne sont pas directement transmis au programme, mais placés (par le système) dans un tampon ( _buffer_ ). Il est possible qu’il reste des caractères d’une saisie précèdente et donc vous aurez besoin de vider le _buffer_ avant de (re)faire une saisie. La méthode pour vider le buffer clavier ( _stdin_ ) consiste à consommer tous les caractères présents dans ce buffer jusqu’à ce qu’il soit vide :
 
 ```C
@@ -1318,8 +1255,7 @@ while ((c = getchar()) != ’\n’ && c != EOF);
 scanf("%*[^\n]");
 getchar();
 ```
-- _EOF signifie End Of File. Pour générer un EOF avec le clavier, il suffit de taper, en début de ligne,_
-Ctrl _+_ z _sous DOS/Windows et_ Ctrl _+_ d _sous UNIX, puis de valider par Entrée._
+_EOF signifie End Of File. Pour générer un EOF avec le clavier, il suffit de taper, en début de ligne,_Ctrl _+_ z _sous DOS/Windows et _Ctrl_+_d_sous UNIX, puis de valider par Entrée._
 
 ### Affichage de chaînes de caractères
 
@@ -1330,17 +1266,12 @@ printf("msg : %s contient %d caractères\n", msg, strlen(msg)); // %s pour une c
 printf("premier caractère : %c\n", msg[0]); // %c pour un simple caractère
 ```
 
-- _L’affichage est bufferisé lui aussi. Tant que le tampon n’est pas plein, les caractères transmis ne
-seront pas effectivement affichés mais tout simplement placés dans le tampon. Pour vider le contenu du
-tampon vers l’écran, il faut un retour à la ligne (\n) ou que le tampon soit plein. On peut aussi forcer le
-vidage de ce tampon à l’aide de la fonction fflush(stdout) ou carrément ne pas utiliser de buffer en
-appelant setbuf(stdout, NULL)._
+_L’affichage est bufferisé lui aussi. Tant que le tampon n’est pas plein, les caractères transmis ne seront pas effectivement affichés mais tout simplement placés dans le tampon. Pour vider le contenu du tampon vers l’écran, il faut un retour à la ligne (\n) ou que le tampon soit plein. On peut aussi forcer le
+vidage de ce tampon à l’aide de la fonction fflush(stdout) ou carrément ne pas utiliser de buffer en appelant setbuf(stdout, NULL)._
 
 ## Les tableaux
 
-Un **tableau** est un **ensemble d’éléments de même type** désignés par un identificateur unique (un
-nom). Chaque élément est repéré par une valeur entière appelée **indice** (ou index) indiquant sa position
-dans l’ensemble. Les tableaux sont toujours à bornes statiques et leur indiçage démarre toujours à partir de 0.
+Un **tableau** est un **ensemble d’éléments de même type** désignés par un identificateur unique (un nom). Chaque élément est repéré par une valeur entière appelée **indice** (ou index) indiquant sa position dans l’ensemble. Les tableaux sont toujours à bornes statiques et leur indiçage démarre toujours à partir de 0.
 
 ### Déclarations de tableaux
 
@@ -1352,9 +1283,7 @@ Exemple de déclarations de tableaux :
 int notes[1000]; // un tableau de 1000 int non initialisé
 float notes[1000]; // un tableau de 1000 float non initialisé
 ```
-+ _Par “non initialisé”, on entend qu’il y a une valeur dans chaque case du tableau mais on ne la
-connaît pas. Il faut donc considérer qu’il y a “n’importe quoi”! On rappelle que “rien” n’est pas une
-notion en informatique car les bits prennent soit la valeur 0 soit la valeur 1 : il n’y a pas de valeur “rien”._
++ _Par “non initialisé”, on entend qu’il y a une valeur dans chaque case du tableau mais on ne la connaît pas. Il faut donc considérer qu’il y a “n’importe quoi”! On rappelle que “rien” n’est pas une notion en informatique car les bits prennent soit la valeur 0 soit la valeur 1 : il n’y a pas de valeur “rien”._
 
 Déclaration et initialisation de tableaux en C/C++ :
 ```C
@@ -1392,9 +1321,7 @@ memset(&presences[0], 0, 30* sizeof ( int ));
 
 ### Les tableaux à plusieurs dimensions
 
-- _Contrairement à beaucoup d’autres langages, il n’existe pas en_ C _de véritable notion de tableaux
-multidimentionnels. De tels tableaux se définissent par composition de tableaux, c’est à dire que les
-éléments sont eux-mêmes des tableaux._
+- _Contrairement à beaucoup d’autres langages, il n’existe pas en_ C _de véritable notion de tableaux multidimentionnels. De tels tableaux se définissent par composition de tableaux, c’est à dire que les éléments sont eux-mêmes des tableaux._
 
 ```C
 // tableau à 2 dimensions de 2 lignes et 5 colonnes :
@@ -1402,10 +1329,12 @@ int m[2][5] = { 2, 6, -4, 8, 11, // initialise avec des valeurs
 3, -1, 0, 9, 2 };
 
 // tableau à 2 dimensions pour stocker plusieurs chaînes de caractères
-char noms[][16] = { {"robert"},
-{"roger"},
-{"raymond"},
-{"alphonse"} };
+char noms[][16] = { 
+    {"robert"},
+    {"roger"},
+    {"raymond"},
+    {"alphonse"} 
+};
 
 int x[5][12][7]; // tableau a 3 dimensions
 ```
@@ -1432,10 +1361,8 @@ Le plus grand danger dans la manipulation des tableaux est d’accéder en écri
 
 ### Les tableaux et les pointeurs
 
-- _L’identificateur du tableau (le nom de la variable)ne désigne pas le tableau dans son ensemble,
-mais plus précisément l’adresse en mémoire du début du tableau (_ **_l’adresse de la première case_** _).
-Ceci implique qu’il est impossible d’affecter un tableau à un autre. L’identificateur d’un tableau sera donc
-"vu" comme un_ **_pointeur constant_**_._
+- L’identificateur du tableau (le nom de la variable) ne désigne pas le tableau dans son ensemble, mais plus précisément l’adresse en mémoire du début du tableau ( **l’adresse de la première case** ).
+Ceci implique qu’il est impossible d’affecter un tableau à un autre. L’identificateur d’un tableau sera donc "vu" comme un **pointeur constant**.
 
 ```C
 #define MAX 20 // définit l’étiquette MAX egale à 20
@@ -1457,9 +1384,7 @@ La dimension d’un tableau peut être omise dans 2 cas :
     // la fonction fct admet en parametre
     void fct( int t[]) // un tableau d’entiers qui existe déjà
 ```    
-_Lorsque le nom d’un tableau constitue l’argument d’une fonction, c’est l’adresse du premier élément
-qui est transmise. Ses élément ne sont donc pas recopiés. Lorsque l’on passe un tableau en paramètre
-d’une fonction, il n’est pas possible de connaître sa taille et il faudra donc lui passer aussi sa taille._
+Lorsque le nom d’un tableau constitue l’argument d’une fonction, c’est l’adresse du premier élément qui est transmise. Ses élément ne sont donc pas recopiés. Lorsque l’on passe un tableau en paramètre d’une fonction, il n’est pas possible de connaître sa taille et il faudra donc lui passer aussi sa taille.
 
 Utilisation des pointeurs avec les tableaux :
 ```C
@@ -1490,29 +1415,21 @@ printf("%d\n", t[1]); // affiche 10
 
 ### Trier un tableau
 
-La bibliothèque C standard offre une fonction de tri :qsort(). Elle sert à trier un tableau d’éléments
-à l’aide d’une fonction de comparaison à fournir. Pour l’utiliser, vous devez inclure le fichier <stdlib.h>.
+La bibliothèque C standard offre une fonction de tri :qsort(). Elle sert à trier un tableau d’éléments à l’aide d’une fonction de comparaison à fournir. Pour l’utiliser, vous devez inclure le fichier <stdlib.h>.
 
-qsort() trie les éléments dans l’ordre que vous lui demandez. Plus précisément, vous donnez à qsort()
-une fonction de comparaison. Cette fonction prend deux éléments A et B, et indique si A doit être avant
-ou après B dans le tableau trié. La fonction de comparaison est donc vitale, c’est elle qui indique dans
+qsort() trie les éléments dans l’ordre que vous lui demandez. Plus précisément, vous donnez à qsort() une fonction de comparaison. Cette fonction prend deux éléments A et B, et indique si A doit être avant ou après B dans le tableau trié. La fonction de comparaison est donc vitale, c’est elle qui indique dans
 quel ordre et selon quels critères il faut trier le tableau.
 
 La fonction de comparaison a le prototype suivant :
 int compareValeurs(const void* val1, const void* val2)
 
-Elle reçoit en argument deux pointeurs val1 et val2, et retourne un entier. val1 et val2 sont des
-pointeurs constants sur les éléments à comparer. Le const empêchera la fonction de comparaison de
-modifier le contenu du tableau pendant le tri. Le type void * est ici obligatoire car la fonction ne peut
-pas connaître avant le type des éléments à comparer. Elle utilise donc des pointeurs génériques (void *)
-qu’il faudra “caster” (transtyper) vers les types désirés.
+Elle reçoit en argument deux pointeurs val1 et val2, et retourne un entier. val1 et val2 sont des pointeurs constants sur les éléments à comparer. Le const empêchera la fonction de comparaison de modifier le contenu du tableau pendant le tri. Le type void * est ici obligatoire car la fonction ne peut pas connaître avant le type des éléments à comparer. Elle utilise donc des pointeurs génériques (void *) qu’il faudra “caster” (transtyper) vers les types désirés.
 
-- _Si la fonction de comparaison est <=, alors à la fin du tri du tableaua[0..n-1] les éléments sont
-réordonnés de telle manière que a[0] <= a[1] <= ... <= a[n-1]. Si on utilise la fonction>=, cela
-donnera a[0] >= a[1] >= ... >= a[n-1]._
+Si la fonction de comparaison est <=, alors à la fin du tri du tableau a[0..n-1] les éléments sont réordonnés de telle manière que a[0] <= a[1] <= ... <= a[n-1]. 
 
-Seul le signe de la valeur retournée par la fonction de comparaison compte. Par exemple on peut
-retourner -1 pour A avant B, +1 pour A après B, et 0 (zéro) si l’ordre ne compte pas.
+Si on utilise la fonction >=, cela donnera a[0] >= a[1] >= ... >= a[n-1].
+
+Seul le signe de la valeur retournée par la fonction de comparaison compte. Par exemple on peut retourner -1 pour A avant B, +1 pour A après B, et 0 (zéro) si l’ordre ne compte pas.
 
 Fonction de comparaison de deux entiers:
 ```C
@@ -1520,8 +1437,8 @@ Fonction de comparaison de deux entiers:
 
 int compareEntiers( const void * val1, const void * val2)
 {
-    int i1 = *( const int *)val1; // on caste sur un type entier
-    int i2 = *( const int *)val2; // on caste sur un type entier
+    int i1 = *(const int*)val1; // on caste sur un type entier
+    int i2 = *(const int*)val2; // on caste sur un type entier
 
     if (i1 == i2)
         return 0;
@@ -1533,19 +1450,13 @@ int compareEntiers( const void * val1, const void * val2)
 
 qsort(valeurs, nbValeurs, sizeof (valeurs[0]), compareEntiers);
 ```
-En pratique, pour trier un tableau valeurs contenant nbValeurs éléments, on donnera à la fonction
-qsort()les arguments suivants :
-- Le nom du tableau,valeurs
-- Le nombre d’éléments du tableau,nbValeurs
-- La taille en octets de chaque élément,sizeof(valeurs[0])
-- Le nom de la fonction de comparaison,compareEntiers
+En pratique, pour trier un tableau valeurs contenant nbValeurs éléments, on donnera à la fonction qsort()les arguments suivants :
+- Le nom du tableau: valeurs
+- Le nombre d’éléments du tableau: nbValeurs
+- La taille en octets de chaque élément: sizeof(valeurs[0])
+- Le nom de la fonction de comparaison: compareEntiers
 
-_Pour rechercher des valeurs dans un tableau, vous pouvez utiliser la fonction bsearch() de la
-bibliothèque C standard, déclarée dans le fichier <stdlib.h>. Cette fonction, qui ressemble beaucoup
-à qsort(), permet d’effectuer une recherche dichotomique. bsearch() recherche une valeur dans un
-tableau initialement trié et prend en argument l’objet cherché (la clé), le tableau, et la fonction de
-comparaison qui permet de savoir si un élément donné est situé avant ou après la clé, ou bien est égal à
-la clé_.
+Pour rechercher des valeurs dans un tableau, vous pouvez utiliser la fonction bsearch() de la bibliothèque C standard, déclarée dans le fichier <stdlib.h>. Cette fonction, qui ressemble beaucoup à qsort(), permet d’effectuer une recherche dichotomique. bsearch() recherche une valeur dans un tableau initialement trié et prend en argument l’objet cherché (la clé), le tableau, et la fonction de comparaison qui permet de savoir si un élément donné est situé avant ou après la clé, ou bien est égal à la clé.
 
 ### Les tableaux dynamiques
 
@@ -1555,30 +1466,31 @@ int *T; // pointeur sur un entier
 
 // allocation dynamique d’un tableau de 10 int (un int est codé sur 4 octets)
 
-T = ( int *)malloc( sizeof ( int ) * 10); // alloue 4 * 10 octets en mémoire
+T = ( int *)malloc( sizeof( int ) * 10); // alloue 4 * 10 octets en mémoire
 
 // initialise le tableau avec des 0
 for ( int i=0;i<10;i++) {
     *(T+i) = 0; // les 2 écritures sont possibles
     T[i] = 0; // identique à la ligne précèdente
     }
+
 // ou avec la fonction memset
 memset(T, 0, sizeof ( int )*10); // il faudra alors inclure string.h
 
 // libération de la mémoire
 free(T);
 ```
-_La fonction realloc() modifie la taille d’un bloc de mémoire déjà alloué._
+
+La fonction realloc() modifie la taille d’un bloc de mémoire déjà alloué.
 
 
 ### Questions de révision
 
-L’idée de base des questions de révision est de vous donner une chance de voir si vous avez identifié et
-compris les points clés de cette partie.
+L’idée de base des questions de révision est de vous donner une chance de voir si vous avez identifié et compris les points clés de cette partie.
 
 **Question 21.** Sur combien de bits est codé un caractère ASCII?
 
-**Question 22.** Quelle est la taille en bits d’une variable de typechar?
+**Question 22.** Quelle est la taille en bits d’une variable de type char?
 
 **Question 23.** Quelle est la valeur en hexadécimale du caractère ASCII ’A’?
 
@@ -1594,47 +1506,36 @@ compris les points clés de cette partie.
 
 **Question 29.** Que fait l’instruction t[5] = 2;?
 
-**Question 30.** Que provoque l’instructiont[10] = 2;?
+**Question 30.** Que provoque l’instruction t[10] = 2;?
 
 ### Conclusion
 
-Les types sont au centre de la plupart des notions de programmes corrects, et certaines des techniques
-de construction de programmes les plus efficaces reposent sur la conception et l’utilisation des types.
+Les types sont au centre de la plupart des notions de programmes corrects, et certaines des techniques de construction de programmes les plus efficaces reposent sur la conception et l’utilisation des types.
 
 ```
 Rob Pike (ancien chercheur des Laboratoires Bell et maintenant ingénieur chez Google) :
-«Règle n°5 : Les données prévalent sur le code. Si vous avez conçu la structure des données
-appropriée et bien organisé le tout, les algorithmes viendront d’eux-mêmes. La structure des
-données est le coeur de la programmation, et non pas les algorithmes.»
+«Règle n°5 : Les données prévalent sur le code. Si vous avez conçu la structure des données appropriée et bien organisé le tout, les algorithmes viendront d’eux-mêmes. La structure des données est le coeur de la programmation, et non pas les algorithmes.»
 ```
 
 ## Les fonctions
 
 ### Programmation procédurale
 
-D’un certain point de vue, un programme informatique ne fait jamais rien d’autre que **traiter des
-données**. Comme on l’a déjà vu, un programme accepte des entrées et produit des sorties :
+D’un certain point de vue, un programme informatique ne fait jamais rien d’autre que **traiter des données**. Comme on l’a déjà vu, un programme accepte des entrées et produit des sorties :
 
-- _Un_ **_traitement est tout simplement l’action de produire des sorties à partir d’entrées_**_.
-Les entrées dans une partie de programme sont souvent appelées des_ **_arguments_** _(ou_ **_paramètres_** _) et
-les sorties d’une partie de programme des_ **_résultats_**_._
+- Un **traitement est tout simplement l’action de produire des sorties à partir d’entrées**.
+- Les entrées dans une partie de programme sont souvent appelées des **arguments** (ou **paramètres** ) 
+- les sorties d’une partie de programme des **résultats**.
 
-La majeure partie du travail d’un programmeur est : comment exprimer un programme sous la forme
-d’un ensemble de parties (des sous-programmes) qui coopèrent et comment peuvent-elles partager et
-échanger des données?
+La majeure partie du travail d’un programmeur est : comment exprimer un programme sous la forme d’un ensemble de parties (des sous-programmes) qui coopèrent et comment peuvent-elles partager et échanger des données?
 
-Par parties de programme (ou de code), on entend des entités (ou modules) comme une **fonction**
-produisant un résultat à partir d’un ensemble d’arguments en entrée.
+Par parties de programme (ou de code), on entend des entités (ou modules) comme une **fonction** produisant un résultat à partir d’un ensemble d’arguments en entrée.
 
-+ _Exemple : un traitement comme produire le résultat (sortie) 7 à partir de l’argument (entrée) 49 au
-moyen de la fonction racineCarree._
++ _Exemple : un traitement comme produire le résultat (sortie) 7 à partir de l’argument (entrée) 49 au moyen de la fonction racineCarree._
 
-En langage C, on pratique la programmation procédurale. La programmation procédurale se
-fonde sur le concept d’appel de procédure. Une procédure, aussi appelée routine , sous-routine ou
-fonction , contient simplement une série d’étapes à réaliser. Un appel de procédure (ou de fonction)
-déclenche l’exécution de la série d’instructions qui la compose.
-En programmation procédurale, un programme n’est plus une simple séquence d’instructions mais un
-ensemble de sous-programmes (en C, des fonctions) s’appelant entre eux :
+En langage C, on pratique la programmation procédurale. La programmation procédurale se fonde sur le concept d’appel de procédure. Une procédure, aussi appelée routine , sous-routine ou fonction , contient simplement une série d’étapes à réaliser. Un appel de procédure (ou de fonction) déclenche l’exécution de la série d’instructions qui la compose.
+
+En programmation procédurale, un programme n’est plus une simple séquence d’instructions mais un ensemble de sous-programmes (en C, des fonctions) s’appelant entre eux :
 
 Le déroulement d’un programme est le suivant :
 - L’exécution du programme commence toujours par l’exécution de la fonction principale (la fonction main() en C/C++)
@@ -1668,31 +1569,36 @@ Il existe deux types de sous-programmes :
 - Les **procédures**
     - Sous-programme qui ne retourne **aucune valeur** : permet de produire **0 à** **_n_** **résultats**
     - Par convention, ce type de sous-programme peut interagir avec l’environnement (écran, utilisateur).
-- _Cette distinction ne se retrouve pas dans tous les langages de programmation! Le_ C _/_ C _++n’admet
-que le concept de fonction qui servira à la fois pour écrire des fonctions et des procédures._
+
+Cette distinction ne se retrouve pas dans tous les langages de programmation! Le C / C ++ n’admet que le concept de fonction qui servira à la fois pour écrire des fonctions et des procédures.
 
 ### Pour les fonctions en C/C++, il faut distinguer :
+
 - la **déclaration** qui est une instruction fournissant au compilateur un certain nombre d’informations concernant une fonction (qui déclare son existence). Il existe une forme recommandée dite **prototype** :
+
 ```C
 // fichier en-tête (.h)
 int plus(int, int);
 ```
+
 - la **définition** qui revient à écrire le **corps** de la fonction (qui définit donc les traitements effectués dans le bloc {} de la fonction)
+
 ```C
 // fichier source (.c ou .cpp)
 int plus(int a, int b) { return a + b; }
 ```
+
 - l’ **appel** qui est son utilisation. Il doit correspondre à la déclaration faite au compilateur qui le vérifie.
+
 ```C
  // fichier source (.c ou .cpp)
 int res = plus(2, 2);
 ```
-_La définition d’une fonction tient lieu de déclaration. Mais elle doit être "connue" avant son
-utilisation (un appel). Sinon, le compilateur gcc génèrera un message d’avertissement (warning) qui
-indiquera qu’il a lui-même fait une déclaration implicite de cette fonction (ce n’est pas une bonne chose).
-Par contre, le compilateur g++ génèrera une erreur :’...’ was not declared in this scope._
 
-+ C _/_ C _++supporte la_ **_récursivité_** _: c’est une technique qui permet à une fonction de s’auto-appeler. La récursivité est une manière simple et élégante de résoudre certains problèmes algorithmiques, notamment en mathématique, mais cela ne s’improvise pas!_
+La définition d’une fonction tient lieu de déclaration. Mais elle doit être "connue" avant son utilisation (un appel). Sinon, le compilateur gcc génèrera un message d’avertissement (warning) qui indiquera qu’il a lui-même fait une déclaration implicite de cette fonction (ce n’est pas une bonne chose).
+Par contre, le compilateur g++ génèrera une erreur :’...’ was not declared in this scope.
+
++ C / C ++ supporte la **récursivité**: c’est une technique qui permet à une fonction de s’auto-appeler. La récursivité est une manière simple et élégante de résoudre certains problèmes algorithmiques, notamment en mathématique, mais cela ne s’improvise pas!
 
 ## Déclaration de fonction
 
@@ -1700,12 +1606,13 @@ Une fonction se caractérise par :
 - son **nom** (un identificateur)
 - sa **liste de paramètre(s)** : le nombre et le type de paramètre(s) (la liste peut être vide)
 - son **type de retour** (un seul résultat)
-- _Comme une procédure ne retourne aucune valeur, son type de retour sera void._
+- Comme une procédure ne retourne aucune valeur, son type de retour sera void.
+
 Ces informations sont communément appelées le **prototype** de la fonction :
 
 ```C
 // Le prototype de la fonction calculeNombreDeSecondes :
-int calculeNombreDeSecondes( int heures, int minutes, int secondes)
+int calculeNombreDeSecondes( int heures, int minutes, int secondes);
 
 // Soit :
 // - son nom : calculeNombreDeSecondes
@@ -1715,26 +1622,28 @@ int calculeNombreDeSecondes( int heures, int minutes, int secondes)
 
 C’est ce qu’il est nécessaire de connaître pour appeler une fonction.
 Quand une fonction n’est pas encore définie, il est possible de déclarer son existence afin de pouvoir l’appeler. Il faut pour cela indiquer son prototype, suivi d’un point-virgule :
+
 ```C
 // La déclaration de la fonction calculeNombreDeSecondes :
 int calculeNombreDeSecondes( int heures, int minutes, int secondes);
 ```
-_Les déclarations de fonction sont placées dans des fichiers d’en-tête (header) d’extension.h. Si vous voulez utiliser (i.e. appeler) une fonction, il faudra donc inclure le fichier d’en-tête correspondant (#include). Un fichier d’en-tête regroupe un ensemble de déclarations._
+
+Les déclarations de fonction sont placées dans des fichiers d’en-tête (header) d’extension.h. Si vous voulez utiliser (i.e. appeler) une fonction, il faudra donc inclure le fichier d’en-tête correspondant (#include). Un fichier d’en-tête regroupe un ensemble de déclarations.
 
 ```C
 // Le fichier d’en-tête temps.h
 #ifndef TEMPS_H /* si l’étiquette TEMPS_H n’est pas défini */
 #define TEMPS_H /* alors on définit l’étiquette TEMPS_H */
 
-int calculeNombreDeSecondes( int heures, int minutes, int secondes);
+int calculeNombreDeSecondes( int heures, int minutes, int secondes)
 
 #endif /* finsi TEMPS_H */
 ```
 Le langage C n’interdit pas l’inclusion multiple de fichiers d’en-tête mais il n’accepte pas toujours de déclarer plusieurs fois la même chose! Par précaution, il faut donc s’assurer par des directives de pré-compilation (#ifndef, #define et #endif) que l’inclusion du fichier sera unique. Les directives de
 pré-compilation (ou préprocesseur) commencent toujours par un dièse (#). Ce ne sont donc pas des instructions du langage C.
 
-Si vous voulez utiliser (i.e. appeler) une fonction, il faudra donc inclure le fichier d’en-tête correspon
-dant :
+Si vous voulez utiliser (i.e. appeler) une fonction, il faudra donc inclure le fichier d’en-tête correspondant :
+
 ```C
 #include "temps.h"
 
@@ -1742,11 +1651,8 @@ dant :
 int s = calculeNombreDeSecondes(1, 0, 0);
 ```
 
-Si vous créer vos propres fichiers d’en-tête, il est conseillé d’indiquer le nom du fichier entre
-guillemets ("temps.h") dans la directive de pré-compilation#include. Vous pourrez indiquer le chemin
-où se trouve vos propres fichiers d’en-tête avec l’option -I du compilateur gcc/g++. On n’utilisera pas
-les délimiteurs <> (#include <stdio.h>) qui sont réservés pour les fichiers d’en-tête systèmes. Dans ce
-cas, le compilateur connaît les chemins d’installation de ces fichers.
+Si vous créer vos propres fichiers d’en-tête, il est conseillé d’indiquer le nom du fichier entre guillemets ("temps.h") dans la directive de pré-compilation #include. Vous pourrez indiquer le chemin où se trouve vos propres fichiers d’en-tête avec l’option -I du compilateur gcc/g++. On n’utilisera pas
+les délimiteurs <> (#include <stdio.h>) qui sont réservés pour les fichiers d’en-tête systèmes. Dans ce cas, le compilateur connaît les chemins d’installation de ces fichers.
 
 ```bash
 $ ls
@@ -1759,8 +1665,7 @@ $ gcc -I./include -c main.c
 
 ## Définition de fonction
 
-La **définition** d’une fonction revient à écrire le **corps** de la fonction dans le bloc{}. Cela définira la
-suite d’instructions qui sera exécutée à chaque appel de la fonction.
+La **définition** d’une fonction revient à écrire le **corps** de la fonction dans le bloc{}. Cela définira la suite d’instructions qui sera exécutée à chaque appel de la fonction.
 
 ```C
 #include "temps.h"
@@ -1772,17 +1677,12 @@ int calculeNombreDeSecondes( int heures, int minutes, int secondes)
 }
 ```
 
-Attention à ne pas mettre de point-virgule à la fin du prototype! Si vous déclarer votre propre
-fonction, il vous faudra absolumment la définir si vous voulez passer l’étape de l’édition de lien (ld).
-Sinon, vous obtiendrez une erreur :undefined reference.
+Attention à ne pas mettre de point-virgule à la fin du prototype! Si vous déclarer votre propre fonction, il vous faudra absolumment la définir si vous voulez passer l’étape de l’édition de lien (ld).
+Sinon, vous obtiendrez une erreur: undefined reference.
 
-Pour que la fonction puisse effectivement retourner une valeur, il faut qu’elle contienne une instruction
-composée du mot-clé return et de la valeur que l’on veut retourner. L’instruction return quitte la
-fonction et transmet la valeur qui suit au programme appelant.
+Pour que la fonction puisse effectivement retourner une valeur, il faut qu’elle contienne une instruction composée du mot-clé return et de la valeur que l’on veut retourner. L’instruction return quitte la fonction et transmet la valeur qui suit au programme appelant.
 
-_Dans le cas des fonctions dont le type de retour est void, il est également possible d’utiliser
-l’instruction return. Elle n’est alors suivie d’aucune valeur et a simplement pour effet de quitter la
-fonction immédiatement._
+Dans le cas des fonctions dont le type de retour est void, il est également possible d’utiliser l’instruction return. Elle n’est alors suivie d’aucune valeur et a simplement pour effet de quitter la fonction immédiatement.
 
 ## Appel de fonction
 
@@ -1797,7 +1697,7 @@ int s = calculeNombreDeSecondes(1, 0, 0);
 ```
 
 Soit la fonction carre() ci-dessous :
-```
+```C
 // Déclaration :
 // Calcule et retourne le carré d’un nombre
 int carre( int ); // le nom du paramètre n’est pas obligatoire
@@ -1838,12 +1738,11 @@ int c7 = carre(x); // Correct (x est copié dans x)
 ## Programmation modulaire
 
 Le découpage en fonctions d’un programme permet la programmation modulaire :
-Par la suite, un utilitaire comme make permettra d’automatiser la fabrication de programme. Il utilise
-un fichier de configuration appelé _makefile_ qui porte souvent le nom de Makefile. Ce fichier décrit des cibles (qui sont souvent des fichiers, mais pas toujours), de quelles autres cibles elles dépendent, et par
-quelles actions (des commandes) y parvenir. Au final, le fichier Makefile contient l’ensemble des règles
-de fabrication du programme :
+Par la suite, un utilitaire comme make permettra d’automatiser la fabrication de programme. Il utilise un fichier de configuration appelé _makefile_ qui porte souvent le nom de Makefile. Ce fichier décrit des cibles (qui sont souvent des fichiers, mais pas toujours), de quelles autres cibles elles dépendent, et par
+quelles actions (des commandes) y parvenir. Au final, le fichier Makefile contient l’ensemble des règles de fabrication du programme :
 
 Exemple de fichier Makefile :
+
 ```Makefile
 CC=gcc
 RM=rm
@@ -1866,6 +1765,7 @@ clean:
 ```
 
 La fabrication de l’exécutable est assurée ensuite par l’utilitaire make:
+
 ```bash
 $ make
 gcc -o main.o -c main.c
@@ -1873,15 +1773,15 @@ gcc -o temps.o -c temps.c
 gcc -o calculTemps main.o temps.o
 $ ./calculTemps
 ```
-+ _Avec son système de dépendance, make ne compile que ce qui est nécessaire. Lire :https://fr.wikipedia.org/wiki/Make._
++ Avec son système de dépendance, make ne compile que ce qui est nécessaire. Lire :https://fr.wikipedia.org/wiki/Make.
 
 ## Passage de paramètre(s)
 
 ### Passage par valeur
 
-Lorsque l’on passe une valeur en paramètre à une fonction, cette valeur est copiée dans une variable
-locale de la fonction correspondant à ce paramètre. Cela s’appelle un passage par valeur.
-'Dans un passage par valeur, il est impossible pour une fonction de modifier les paramètres qu’elle reçoit. 
+Lorsque l’on passe une valeur en paramètre à une fonction, cette valeur est copiée dans une variable locale de la fonction correspondant à ce paramètre. Cela s’appelle un passage par valeur.
+
+Dans un passage par valeur, il est impossible pour une fonction de modifier les paramètres qu’elle reçoit. 
 
 Essayons de permuter deux variables :
 ```C
@@ -1904,13 +1804,11 @@ int main()
     return 0;
 }
 ```
-_Les variables a et b sont locales au bloc ({}) où elles sont définies. Des variables définies dans des
-blocs différents peuvent porter le même nom._
+Les variables a et b sont locales au bloc ({}) où elles sont définies. Des variables définies dans des blocs différents peuvent porter le même nom.
 
 ### Passage par adresse
 
-Pour permettre à une fonction de modifier les paramètres qu’elle reçoit, il faudra passer les adresses
-des variables comme paramètres. On utilise dans ce cas des pointeurs. Cela s’appelle un **passage par adresse** :
+Pour permettre à une fonction de modifier les paramètres qu’elle reçoit, il faudra passer les adresses des variables comme paramètres. On utilise dans ce cas des pointeurs. Cela s’appelle un **passage par adresse** :
 
 ```C
 // Permute deux entiers
@@ -1936,6 +1834,7 @@ int main()
 ```
 
 Le passage d’un tableau en paramètre d’une fonction est évidemment possible :
+
 ```C
 #include <stdio.h>
 
@@ -1959,33 +1858,25 @@ int main()
 }
 ```
 
-Le tableau passé en paramètre a bien été modifié car la fonction raz() à travailler avec l’adresse
-du tableau. Les cases du tableau n’ont pas été recopiées et la fonction accède au tableau original. On
-rappelle qu’il n’existe pas de variable désignant un tableau comme un tout. Quand on déclare int t[2],
-t ne désigne pas l’ensemble du tableau mais l’adresse de la première case. t est une **constante de type
-pointeur** vers un int dont la valeur est &t[O], l’adresse du premier élément du tableau.
+Le tableau passé en paramètre a bien été modifié car la fonction raz() à travailler avec l’adresse du tableau. Les cases du tableau n’ont pas été recopiées et la fonction accède au tableau original. On rappelle qu’il n’existe pas de variable désignant un tableau comme un tout. Quand on déclare int t[2],
+t ne désigne pas l’ensemble du tableau mais l’adresse de la première case. t est une **constante de type pointeur** vers un int dont la valeur est &t[O], l’adresse du premier élément du tableau.
 
-_C’est une très bonne chose en fait car dans le cas d’un "gros tableau", on évite ainsi de recopier
-toutes les cases. Le passage par adresse sera beaucoup plus efficace et rapide._
+C’est une très bonne chose en fait car dans le cas d’un "gros tableau", on évite ainsi de recopier toutes les cases. Le passage par adresse sera beaucoup plus efficace et rapide.
 
 ## Valeur de retour
 
-Par définition, une fonction fournit un **résultat**. Pour cela, on lui déclare un **type de retour** et on
-renvoie une valeur (du type déclaré) avec l’instruction **return**. Cette instruction provoque évidemment
-la sortie de la fonction appelée. La valeur de retour peut servir à **renvoyer un résultat** ou **un état sur l’exécution** de la fonction appelée.
+Par définition, une fonction fournit un **résultat**. Pour cela, on lui déclare un **type de retour** et on renvoie une valeur (du type déclaré) avec l’instruction **return**. Cette instruction provoque évidemment la sortie de la fonction appelée. La valeur de retour peut servir à **renvoyer un résultat** ou **un état sur l’exécution** de la fonction appelée.
 
-Certains programmeurs utilisent donc la valeur de retour pour indiquer si la fonction a réalisé son
-traitement avec succès ou si elle a rencontré une erreur. C’est le cas de beaucoup de fonctions systèmes.
+Certains programmeurs utilisent donc la valeur de retour pour indiquer si la fonction a réalisé son traitement avec succès ou si elle a rencontré une erreur. C’est le cas de beaucoup de fonctions systèmes.
 On distingue différentes pratiques pour la convention du type de retour :
 
-- valeur de retour de type booléen (bool) :true(succès) ou false(erreur)
-- valeur de retour de type entière (int) : 0 (succès) ou !=0(un code d’erreur)
-- valeur de retour de type entière (int) : 1 (succès) ou <0(un code d’erreur)
+- valeur de retour de type booléen (bool): true(succès) ou false(erreur)
+- valeur de retour de type entière (int): 0 (succès) ou !=0(un code d’erreur)
+- valeur de retour de type entière (int): 1 (succès) ou <0(un code d’erreur)
 
 Il ne faut jamais négliger ce type de code de retour lorsqu’on utilise une fonction. Prenons un exemple : vous appelez une fonction pour créer un répertoire (man 2 mkdir) puis une fonction pour copier un fichier dans ce répertoire. Si la création du répertoire échoue, cela ne sert à rien d’essayer de copier ensuite le fichier. La réussite (ou l’échec) de la première action conditionne l’exécution de la deuxième action. Si vous ne testez jamais les codes de retour de fonction, vous allez provoquer des cascades d’erreurs.
 
-Dans certaines situations extrêmes, vous risquer d’avoir besoin de sortir immédiatement du programme quelque soit l’endroit où vous êtes. Vous pouvez utiliser la fonction exit() qui termine normalement un
-programme en indiquant une valeur de retour. Évidemment, la fonction exit() ne revient jamais.
+Dans certaines situations extrêmes, vous risquer d’avoir besoin de sortir immédiatement du programme quelque soit l’endroit où vous êtes. Vous pouvez utiliser la fonction exit() qui termine normalement un programme en indiquant une valeur de retour. Évidemment, la fonction exit() ne revient jamais.
 
 Quitter un programme:
 ```C
@@ -2020,7 +1911,7 @@ $ gcc mkrep.c
 
 $ ./a.out
 $ ls -l
--rwxrwxr-x 1 tv tv 8,3K août 9 10:47 a.out*
+-rwxrwxr-x 1 tv tv 8,3K août 9 10:47 a.out
 drwxr-x--- 2 tv tv 4,0K août 9 10:47 dossier/
 -rw-rw-r-- 1 tv tv 329 août 9 10:47 mkrep.c
 $ ./a.out
@@ -2034,29 +1925,27 @@ Un nom de fonction est construit à l’aide d’un verbe (surtout pas un nom), 
 - un complément d’objet
 - un adjectif représentatif d’un état
 
-_Une fonction est composée d’une série d’instructions qui effectue un traitement. Il faut donc utiliser un verbe pour caractériser l’action réalisée par la fonction._
+Une fonction est composée d’une série d’instructions qui effectue un traitement. Il faut donc utiliser un verbe pour caractériser l’action réalisée par la fonction.
+
 On utilisera la convention suivante : **un nom de fonction commence par une lettre minuscule puis les différents mots sont repérés en mettant en majuscule la première lettre d’un nouveau mot.**
 Le verbe peut être au présent de l’indicatif ou à l’infinitif. L’adjectif représentatif d’un état concerne surtout les fonctions booléennes. La quantité peut, le cas échéant, enrichir le sens du complément.
 Exemples : void ajouter(), void sauverValeur(), estPresent(), estVide(), videAMoitieLeReservoir(), ...
-_Les mots clés du langage sont interdits comme noms._
-Les noms des paramètres d’une fonction sont construits comme les noms de variables : ils commencent,
-notamment par une minuscule. L’ordre de définition des paramètres doit respecter la règle suivante :
+
+Les mots clés du langage sont interdits comme noms.
+
+Les noms des paramètres d’une fonction sont construits comme les noms de variables : ils commencent, notamment par une minuscule. L’ordre de définition des paramètres doit respecter la règle suivante :
 nomFonction(parametrePrincipal, listeParametres)
-où parametrePrincipal est la donnée principale sur laquelle porte la fonction, la listeParametres
-ne comportant que des données secondaires, nécessaires à la réalisation du traitement réalisé par la
-fonction.
+où parametrePrincipal est la donnée principale sur laquelle porte la fonction, la listeParametres ne comportant que des données secondaires, nécessaires à la réalisation du traitement réalisé par la fonction.
+
 Exemple :ajouter(float mesures[], float uneMesure)
+
 Le rôle de cette fonction est d’ajouter une mesure à un ensemble de mesures(qui est la donnée principale) et non, d’ajouter un ensemble de mesures à une mesure.
-- _Bonne pratique : L’objectif de la programmation procédurale est de décomposer un traitement de
-grande taille en plusieurs parties plus petites jusqu’à obtenir quelque chose de suffisamment simple à
-comprendre et à résoudre (cf. Descartes et son discours de la méthode). Pour cela, on va_ **_s’obliger à
-limiter la taille de nos fonctions à une valeur comprise entre 10 à 15 lignes maximum_**
-_(accolades exclues)._
+- Bonne pratique : L’objectif de la programmation procédurale est de décomposer un traitement de grande taille en plusieurs parties plus petites jusqu’à obtenir quelque chose de suffisamment simple à comprendre et à résoudre (cf. Descartes et son discours de la méthode). Pour cela, on va s’obliger à limiter la taille de nos fonctions à une valeur comprise entre 10 à 15 lignes maximum (accolades exclues).
 
 
 ## La fonction main
 
-Tout programme C/C++ doit posséder une **fonction** nommée main (dite fonction principale) pour indiquer où commencer l’exécution. La fonctionmain()représente le point d’entrée (et de sortie) d’un programme exécuté par le “système” (c’est-à-dire le système d’exploitation).
+Tout programme C/C++ doit posséder une **fonction** nommée main (dite fonction principale) pour indiquer où commencer l’exécution. La fonction main()représente le point d’entrée (et de sortie) d’un programme exécuté par le “système” (c’est-à-dire le système d’exploitation).
 
 La fonction main():
 ```C
@@ -2078,7 +1967,7 @@ int main( int argc, char **argv)
 ```
 
 ```C
-// Forme normalisée :
+// Forme normalisée 2 eme forme:
 int main( int argc, char *argv[])
 {
 
@@ -2087,7 +1976,8 @@ int main( int argc, char *argv[])
 ```
 
 **Paramètres d’entrée :** la fonction main() reçoit deux paramètres (ils peuvent être ignorés) :
-un entier (int) qui précisera le nombre d’arguments passés au programme et un tableau de chaînes de caractères (char ** ou char *[]) qui contiendra la liste de ses arguments.
+- un entier (int) qui précisera le nombre d’arguments passés au programme  
+- un tableau de chaînes de caractères (char ** ou char *[]) qui contiendra la liste de ses arguments.
 
 Les arguments d’un programme :
 ```C
@@ -2119,15 +2009,10 @@ $ ./a.out
 nb d’arguments = 1
 argv[0] = ./a.out
 ```
+Il existe une fonction getopt() qui permet d’analyser plus facilement les options d’une ligne de commande (man 3 getopt).
 
-_Il existe une fonction getopt() qui permet d’analyser plus facilement les options d’une ligne de commande (man 3 getopt)._
-
-**Valeur de retour :** la fonction main() doit retourner une valeur entière (int). Sur certains
-systèmes (Unix/Linux), elle peut servir à vérifier si le programme s’est exécuté correctement. Un zéro ( 0 )
-indique alors que le programme s’est terminé avec succès (c’est une convention). Évidemment, une valeur
-différente de 0 indiquera que le programme a rencontré une erreur. Et sa valeur précisera alors le type de
-l’erreur. Sur un système Unix/Linux, la dernière valeur de retour reçue est stockée dans une variable $?
-du _shell_.
+**Valeur de retour :** la fonction main() doit retourner une valeur entière (int). Sur certains systèmes (Unix/Linux), elle peut servir à vérifier si le programme s’est exécuté correctement. Un zéro ( 0 ) indique alors que le programme s’est terminé avec succès (c’est une convention). Évidemment, une valeur différente de 0 indiquera que le programme a rencontré une erreur. Et sa valeur précisera alors le type de l’erreur. Sur un système Unix/Linux, la dernière valeur de retour reçue est stockée dans une variable $?
+du shell.
 
 La valeur de retour d’un programme
 ```C
@@ -2156,14 +2041,12 @@ $ echo $?
 ## Fonctions statiques
 
 Par défaut, lorsqu’une fonction est définie dans un fichier C/C++, elle peut être utilisée dans tout autre fichier pourvu qu’elle soit déclarée avant son utilisation. Dans ce cas, la fonction est dite **externe**(mot-clé extern).
-Il peut cependant être intéressant de définir des fonctions locales à un fichier, soit afin de résoudre des conflits de noms (entre deux fonctions de même nom et de même signature mais dans deux fichiers différents), soit parce que la fonction est uniquement d’intérêt local. LeC/C++fournit donc le mot clé static qui, une fois placé devant la définition et les éventuelles déclarations d’une fonction, la rend unique et utilisable uniquement dans ce fichier. À part ce détail, les fonctions statiques s’utilisent exactement comme des fonctions classiques.
+Il peut cependant être intéressant de définir des fonctions locales à un fichier, soit afin de résoudre des conflits de noms (entre deux fonctions de même nom et de même signature mais dans deux fichiers différents), soit parce que la fonction est uniquement d’intérêt local. Le C/C++ fournit donc le mot clé static qui, une fois placé devant la définition et les éventuelles déclarations d’une fonction, la rend unique et utilisable uniquement dans ce fichier. À part ce détail, les fonctions statiques s’utilisent exactement comme des fonctions classiques.
 
 Cas des variables :
-Le mot clé static, placé devant le nom d’ **une variable globale** (une variable déclarée en dehors de
-tout bloc{}), a le même effet que pour les fonctions statiques. On parle alors de variable globale cachée.
+Le mot clé static, placé devant le nom d’ **une variable globale** (une variable déclarée en dehors de tout bloc{}), a le même effet que pour les fonctions statiques. On parle alors de variable globale cachée.
 
-Le mot clé static, placé devant le nom d’une **variable locale** (une variable déclarée dans un bloc
-{}), rend la variable persistante (la variable conserve sa valeur) entre chaque entrée dans le bloc.
+Le mot clé static, placé devant le nom d’une **variable locale** (une variable déclarée dans un bloc {}), rend la variable persistante (la variable conserve sa valeur) entre chaque entrée dans le bloc.
 
 Variable locale statique:
 ```C
@@ -2196,21 +2079,14 @@ La fonction a été appelée : 3 fois
 ### Nombre variable de paramètres
 
 En général, les fonctions ont un nombre constant de paramètres. 
-Le C et le C++ disposent toutefois d’un mécanisme qui permet au programmeur de réaliser des fonctions
-dont le nombre et le type des paramètres sont variables. C’est le cas par exemple des fonctions printf()
-et scanf().
+Le C et le C++ disposent toutefois d’un mécanisme qui permet au programmeur de réaliser des fonctions dont le nombre et le type des paramètres sont variables. C’est le cas par exemple des fonctions printf() et scanf().
 
-Pour indiquer au compilateur qu’une fonction peut accepter une liste de paramètres variable, il faut
-simplement utiliser des points de suspensions dans la liste des paramètres dans les déclarations et la
-définition de la fonction :
+Pour indiquer au compilateur qu’une fonction peut accepter une liste de paramètres variable, il faut simplement utiliser des points de suspensions dans la liste des paramètres dans les déclarations et la définition de la fonction :
 
 type identificateur(paramètres, ...)
-Dans tous les cas, il est nécessaire que la fonction ait au moins un paramètre classique. Les paramètres
-classiques doivent impérativement être avant les points de suspensions.
+Dans tous les cas, il est nécessaire que la fonction ait au moins un paramètre classique. Les paramètres classiques doivent impérativement être avant les points de suspensions.
 
-On utilisera le type va_list et les expressions va_start, va_arg et va_end pour récupérer les
-arguments de la liste de paramètres variable, un à un. Pour cela, il faudra inclure le fichier d’en-tête
-stdarg.h.
+On utilisera le type va_list et les expressions va_start, va_arg et va_end pour récupérer les arguments de la liste de paramètres variable, un à un. Pour cela, il faudra inclure le fichier d’en-tête stdarg.h.
 
 Nombre variable de paramètres:
 ```C
@@ -2249,6 +2125,7 @@ int main()
 ## Pointeur vers une fonction
 
 Le nom d’une fonction est une constante de type pointeur.
+
 Pointeur sur une fonction:
 ```C
 // une fonction
@@ -2269,8 +2146,7 @@ printf("%d\n", (*pf)(3, 5)); // affiche 8
 
 ### Questions de révision
 
-L’idée de base des questions de révision est de vous donner une chance de voir si vous avez identifié et
-compris les points clés de cette partie.
+L’idée de base des questions de révision est de vous donner une chance de voir si vous avez identifié et compris les points clés de cette partie.
 
 **Question 31.** Quelles sont les quatre parties d’une fonction?
 
@@ -2278,21 +2154,15 @@ compris les points clés de cette partie.
 
 **Question 33.** Citer les trois types de passage de paramètres?
 
-**Question 34.** Donner la déclation d’une fonction foo qui reçoit en paramètres un tableau d’entiers et
-le nombre d’éléments qu’il contient et qui retourne la somme de ces élèments.
+**Question 34.** Donner la déclation d’une fonction foo qui reçoit en paramètres un tableau d’entiers et le nombre d’éléments qu’il contient et qui retourne la somme de ces élèments.
 
 ### Conclusion
 
-Il est indispensable de décomposer un traitement de grande taille en plusieurs parties plus petites
-jusqu’à obtenir quelque chose de suffisamment simple à comprendre et à résoudre. Cette approche
-consistant à décomposer une tâche complexe en une suite d’étapes plus petites (et donc plus facile à
-gérer) ne s’applique pas uniquement à la programmation et aux ordinateurs. Elle est courante et utile
-dans la plupart des domaines de l’existence.
+Il est indispensable de décomposer un traitement de grande taille en plusieurs parties plus petites jusqu’à obtenir quelque chose de suffisamment simple à comprendre et à résoudre. Cette approche consistant à décomposer une tâche complexe en une suite d’étapes plus petites (et donc plus facile à gérer) ne s’applique pas uniquement à la programmation et aux ordinateurs. Elle est courante et utile dans la plupart des domaines de l’existence.
 
 ```
 Descartes (mathématicien, physicien et philosophe français) dans le Discours de la méthode :
-«diviser chacune des difficultés que j’examinerais, en autant de parcelles qu’il se pourrait,
-et qu’il serait requis pour les mieux résoudre.»
+«diviser chacune des difficultés que j’examinerais, en autant de parcelles qu’il se pourrait, et qu’il serait requis pour les mieux résoudre.»
 ```
 ## Types composés
 

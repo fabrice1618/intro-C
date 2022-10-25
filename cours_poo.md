@@ -707,7 +707,7 @@ La forme habituelle d’opérateur d’affectation est la suivante :
 class T
 {
 public:
-    T& operator=( **const** T&);
+    T& operator=( const T&);
 };
 ```
 
