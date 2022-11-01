@@ -326,7 +326,7 @@ free(T);
 La fonction realloc() modifie la taille d’un bloc de mémoire déjà alloué.
 
 
-### C - Conclusion
+## C - Conclusion
 
 Les types sont au centre de la plupart des notions de programmes corrects, et certaines des techniques de construction de programmes les plus efficaces reposent sur la conception et l’utilisation des types.
 

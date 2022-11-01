@@ -725,7 +725,7 @@ int main ()
 }
 ```
 
-### M - Conclusion
+## M - Conclusion
 
 Parce qu’il est clair que vous débutez à peine votre carrière de programmeur, n’oubliez pas qu’écrire de bons programmes, c’est écrire des programmes corrects, simples et efficaces.
 

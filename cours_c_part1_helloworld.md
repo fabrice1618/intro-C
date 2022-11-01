@@ -189,7 +189,7 @@ fichier de définition des traductions
 #endif
 
 // Version internationale
-#ifndef LANG_EN
+#ifdef LANG_EN
 #define MSG_HELLO "Hello world!\n"
 #endif
 ```
@@ -384,4 +384,4 @@ Descartes (mathématicien, physicien et philosophe français) dans le Discours d
 
 **Question 9.** Que contient un fichier objet?
 
-**Question 10.** Qu’est-ce qu’un environnement de développement intégré (EDI)?
+**Question 10.** Qu’est-ce qu’un environnement de développement intégré (IDE)?
