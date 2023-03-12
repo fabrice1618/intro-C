@@ -1,6 +1,8 @@
 *.pdf
+.vscode/
 ex??
 cplusplus/
 non-exporte/
 geoip/
 tri/
+exercices/liste_chainees/old*

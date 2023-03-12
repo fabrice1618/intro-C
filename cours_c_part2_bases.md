@@ -142,17 +142,33 @@ Utilisation des pointeurs :
 
 ```C
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
-    int i = 2;      // Déclaration d'un entier
-    int *ptrInt;    // Déclaration d'un pointeur sur un entier
+    int valeur;
+    int* pointeur;
 
-    ptrInt = &i;    // le pointeur ptrInt contient l'adresse de la variable i
-    *ptrInt = 3;    // Modifier le contenu de l'entier pointé par ptrInt avec 3, donc la variable i
+    valeur = 5;
+    pointeur = &valeur;
 
-    printf("La variable i vaut %d et son adresse en mémoire est %lX\n", i, (unsigned long)ptrInt );
+    // Contenu de la variable valeur
+    printf("valeur=%d\n", valeur);
+    // Contenu du pointeur, donc une adresse
+    printf("pointeur=%p\n", pointeur);
+    // Contenu de ce qui est pointé par le pointeur
+    printf("contenu pointeur=%d\n", *pointeur);
+
+    // Modification du contenu pointé par pointeur
+    *pointeur = 2;
+    printf("contenu pointeur=%d\n", *pointeur);
+    // La variable valeur à été modifiée
+    printf("valeur=%d\n", valeur);
+
+
+    return 0;
 }
+
 ```
 
 

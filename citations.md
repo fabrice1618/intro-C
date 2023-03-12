@@ -1,0 +1,75 @@
+# Citations
+
+- Les ordinateurs sont rapides; les programmeurs les gardent lents.
+- Un code supprimé est un code débogué.
+- Les logiciels et les cathédrales, c’est un peu la même chose - d’abord on les construit, ensuite on prie.
+- Le copier-coller a été programmé par des programmeurs pour des programmeurs.
+- Un fils a demandé à son père (un programmeur) pourquoi le soleil se lève à l’est et se couche à l’ouest. Sa réponse ? Ça marche, il ne faut pas toucher !
+- J’ai enfin appris ce que signifie compatible. Ça veut dire qu’on peut garder toutes nos vieilles erreurs.
+- Ça compile ; on peut le ship !
+- 1: les démonstrations se plantent toujours. 2: La probabilité qu’elles se plantent augmente de façon exponentielle avec le nombre de personnes qui les regardent.
+- Aujourd’hui, la programmation est une course entre les ingénieurs logiciels qui s’efforcent de construire des programmes de plus en plus grands et de mieux en mieux protégés contre les idiots, et l’Univers qui essaie de produire des idiots de plus en plus grands. Jusqu’à présent, l’Univers gagne.
+- Mesurer les progrès de la programmation en lignes de code, c’est comme mesurer les progrès de la construction d’un avion en poids.
+- Algorithme : Mot utilisé par les programmeurs quand ils ne veulent pas expliquer ce qu’ils ont fait.
+- Si le debug est le processus d’élimination des bugs, alors la programmation doit être le processus d’introduction des bugs.
+- Programmeur: Une machine qui transforme le café en code.
+- Marcher sur l’eau et développer un logiciel à partir d’une spécification sont faciles si les deux sont figés.
+- Les logiciels subissent des tests bêta peu avant leur sortie. Beta, c’est du latin pour dire - ça ne marche toujours pas.
+- Toujours coder comme si la personne qui finit par maintenir votre code sera un psychopathe violent qui sait où vous habitez.
+- Aucun code n’a zéro défaut.
+- Dans une pièce remplie des meilleurs concepteurs de logiciels, si deux sont d’accord sur la même chose, c’est une majorité.
+- Ce n’est pas un bogue - c’est une fonctionnalité non documentée.
+- Combien de programmeurs faut-il pour changer une ampoule ? Aucun, c’est un problème de matériel.
+- Dans une équipe de projet logiciel de dix personnes, il y a probablement trois personnes qui produisent suffisamment de bugs pour donner du travail aux autres.
+- Ça fonctionne sur ma machine.
+- Un bon programmeur est quelqu’un qui regarde toujours des deux côtés avant de traverser une rue à sens unique.
+- Le débogage est deux fois plus difficile que l’écriture du code en premier lieu. Par conséquent, si vous écrivez le code aussi intelligemment que possible, vous n’êtes, par définition, pas assez intelligent pour le déboguer.
+- Quand j’ai écrit ce code, seuls dieu et moi comprenions ce que j’ai fait. Maintenant, seul dieu le sait.
+- Ne t’inquiète pas si ça ne marche pas bien. Si tout marchait bien, vous n’auriez plus de travail.
+- Rappelez-vous qu’il n’y a pas de code plus rapide que l’absence de code.
+- Il y a deux façons d’écrire des programmes sans erreur ; seule la troisième fonctionne.
+- Le code, c’est comme le sexe : Une erreur et vous devez le supporter les conséquences pour le reste de votre vie.
+- La documentation est comme le sexe : Quand elle est mauvaise, c’est mieux que rien. Quand elle est bonne, elle est vraiment, vraiment bonne.
+- Question : Qu’a dit le code Java au code C ? Réponse : Vous n’avez pas de classe.
+- Roulette russe : [ $[ $RANDOM % 6 ] == 0 ] && rm -rf / || echo *Click*
+- Si Java disposait d’un véritable garbage collection, la plupart des programmes s’effaceraient d’eux-mêmes dès leur exécution.
+- Sans le C, nous n’avons que Obol, Pasal et BASI.
+- Les programmeurs COBOL comprennent pourquoi les femmes détestent les règles.
+- Quand votre marteau est C++, tout commence à ressembler à un pouce.
+- Les programmeurs C ne meurent jamais. Ils sont juste rejetés dans le vide.
+- En C, il est facile de se tirer une balle dans le pied ; en C++, c’est plus difficile, mais quand vous le faites, ça vous fait sauter la jambe entière.
+- L’une des principales causes de la chute de l’Empire romain était que, faute de zéro, ils n’avaient aucun moyen d’indiquer la fin réussie de leurs programmes C.
+- Perl : Le seul langage qui a la même apparence avant et après le cryptage RSA.
+- Partenaire du programmeur : ‘Tu vas rester assis à taper devant ce truc toute la journée, ou tu sors avec moi ?‘. Programmeur : ‘Oui.’
+- Il n’y a pas besoin de chiffrer du code en Perl parce que c’est inutile.
+- Logique JavaScript : 0 =="0" et 0 == [] ; par conséquent, "0" != [].
+- En C, nous devions coder nos propres bugs. En C++ nous pouvons en hériter.
+- Pour comprendre ce qu’est la récursion, vous devez d’abord comprendre la récursion.
+- Si vous mettez un million de singes à un million de claviers, l’un d’entre eux finira par écrire un programme Java. Les autres écriront des programmes Perl.
+- C++ : Une pieuvre fabriquée en clouant des pattes supplémentaires sur un chien.
+- Question : Si 1 est vrai et 0 est faux ? Réponse : 1.
+- Quel est le moyen orienté objet pour s’enrichir ? L’héritage.
+- Une requête SQL entre dans un bar, s’approche de deux tables et demande : ‘Puis-je me joindre à vous ?’
+- La programmation a rendu l’impossible possible. Vous pouvez avoir un objet nul et une variable constante.
+- Il y a 10 sortes de personnes dans le monde : Ceux qui connaissent le binaire et ceux qui ne le connaissent pas.
+- Il n’existe que deux types de langages de programmation. Ceux dont les gens se plaignent et ceux que personne n’utilise.
+- Certaines personnes, lorsqu’elles sont confrontées à un problème, pensent : - Je sais, je vais utiliser des expressions régulières. Maintenant, ils ont deux problèmes.
+- Question: Quelle est la différence entre C et C++ ? Réponse: 1. Parce que C - C++ = 1.
+- Toc, toc … Qui est là ? … très longue pause … Java.
+- UNIX n’a pas été conçu pour empêcher les gens de faire des choses stupides, car cela les empêcherait aussi de faire des choses intelligentes.
+- Le matériel est fait pour durer. Les logiciels sont faits pour changer. Le changement est la seule chose qui dure. Le logiciel gagne.
+- Défaillance du clavier. Appuyez sur F1 pour continuer.
+- Linux n’est gratuit que si votre temps n’a aucune valeur.
+- UNIX est simple. Il faut juste un génie pour comprendre sa simplicité.
+- Il n’y a pas d’endroit aussi bien que 127.0.0.1.
+- Les partenaires potentiels sont comme les noms de domaine Internet - ceux qui me plaisent sont déjà pris.
+- Un administrateur système a deux problèmes : 1. Des utilisateurs idiots. 2. Les utilisateurs intelligents.
+- Les ordinateurs sont bons pour suivre des instructions mais pas pour lire votre esprit.
+- L’ordinateur est né pour résoudre des problèmes qui n’existaient pas auparavant.
+- Quand tout le reste échoue… redémarrez.
+- Il y a un chemin facile et un chemin difficile. La partie difficile est de trouver la voie facile.
+- En théorie, il ne devrait pas y avoir de différence entre la théorie et la pratique. En pratique, il y en a une.
+- Je n’ai pas échoué. J’ai juste trouvé 10 000 façons qui ne fonctionneront pas.
+- J’ai toujours souhaité que mon ordinateur soit aussi facile à utiliser que mon téléphone. Mon souhait s’est réalisé. Je ne sais plus comment utiliser mon téléphone.
+- Il n’y a pas de Ctrl-Z dans la vie.
+- Quand nous n’avions pas d’ordinateurs, nous n’avions pas non plus de problèmes de programmation.
