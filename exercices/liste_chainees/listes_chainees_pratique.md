@@ -5,117 +5,47 @@ Vous pouvez créer des listes chaînées contenant n'importe quel type d'éléme
 
 ## Définition des types de données
 
-liste1.c:
+- On crée le type Node qui est une structure contenant un entier (data) et un pointeur sur le prochain élément (next). 
+- On crée le type Liste contenant le nombre d'éléments (count) et un pointeur sur le premier élément.
 
-```C
-#include <stdlib.h>
-#include <stdio.h>
-
-// Element de la liste
-typedef struct node {
-    int data;
-    struct node *next;
-} Node;
-
-// Entete de la liste
-typedef struct header {
-    int count;
-    Node *first;
-} ListHeader;
-
-int main()
-{
-    ListHeader liste;
-    Node node;          // creation statique
-    Node *p;
-
-    // Initialisation de la liste
-    liste.count = 0;
-    liste.first = NULL;
-
-    // Initialisation du noeud
-    node.data = 42;
-    node.next = NULL;
-
-    // Ajout du noeud à la liste
-    liste.first = &node;
-    liste.count++;
-
-    // Affichage de la liste
-    printf("Entete liste:\n");
-    printf("\tcount:%d\n", liste.count);
-    printf("\tfirst:%p\n", liste.first);
-
-    p = liste.first;
-    while (p != NULL) {
-        printf("Element liste:\n");
-        printf("\tdata:%d\n", p->data);
-        printf("\tnext:%p\n", p->next);
-        p = p->next;
-    }
-
-    return EXIT_SUCCESS;
+```mermaid
+classDiagram
+class Liste{
+    +int count
+    +Node *first
 }
 
+class Node{
+    +int data
+    +Node *next
+}
+
+Node *-- Liste
 ```
 
-- On crée le type Node qui est une structure contenant un entier (data) et un pointeur sur le prochain élément (next). 
-- On crée le type List_header contenant le nombre d'éléments (count) et un pointeur sur le premier élément.
+liste.h:
+```C
+!!!include(liste.h)!!!
+```
+
+## La première liste 
+etape1.c:
+```C
+!!!include(etape1.c)!!!
+```
 
 ## Création d'une liste vide
 
-liste2.c:
-
+etape2.c:
 ```C
-#include <stdlib.h>
-#include <stdio.h>
-
-// Element de la liste
-typedef struct node {
-    int data;
-    struct node *next;
-} Node;
-
-// Entete de la liste
-typedef struct header {
-    int count;
-    Node *first;
-} listHeader;
-
-// Prototypes de fonctions
-void listHeader_init( listHeader *liste);
-void listHeader_print( listHeader *liste);
-
-int main()
-{
-    listHeader liste;
-    
-    listHeader_init(&liste);
-    listHeader_print(&liste);
-
-    return EXIT_SUCCESS;
-}
-
-// Etat initial d'une liste
-void listHeader_init( listHeader *liste)
-{
-    liste->count = 0;
-    liste->first = NULL;
-}
-
-// Affichage données de la l'entete de la liste
-void listHeader_print( listHeader *liste)
-{
-    printf("Entete liste:\n");
-    printf("\tcount:%d\n", liste->count);
-    printf("\tfirst:%p\n", liste->first);
-
-}
+!!!include(etape2.c)!!!
 ```
+
+liste.c: voir ci-dessous
 
 Il est important de toujours initialiser la liste chaînée à NULL. Le cas échéant, elle sera considérée comme contenant au moins un élément. C'est une erreur fréquente. A garder en mémoire, il est plus sage de toujours initialiser vos pointeurs.
 
-## Fonctions de gestion dynamique de mémoire
+## Fonctions C de gestion dynamique de la mémoire
 
 ```
 SYNOPSIS
@@ -147,94 +77,21 @@ The free() function returns no value.
 
 ## Allocation dynamique d'un élément
 
-liste3.c
-
+etape3.c:
 ```C
-#include <stdlib.h>
-#include <stdio.h>
-
-// Element de la liste
-typedef struct node {
-    int data;
-    struct node *next;
-} Node;
-
-// Entete de la liste
-typedef struct header {
-    int count;
-    Node *first;
-} ListHeader;
-
-// Prototypes de fonctions
-void listHeader_init( ListHeader *liste);
-void listHeader_print( ListHeader *liste);
-void list_print( ListHeader *liste);
-
-int main()
-{
-    ListHeader liste;
-    Node *node;          // creation dynamique
-
-    listHeader_init(&liste);    // Initialisation de la liste
-    
-    // Allocation dynamique d'un noeud
-    node = malloc( sizeof(Node) );
-    if (node == NULL) {
-        fprintf(stderr, "Erreur allocation mémoire\n");
-        exit(EXIT_FAILURE);
-    }
-
-    // Initialisation du noeud
-    node->data = 42;
-    node->next = NULL;
-
-    // Ajout du noeud à la liste
-    liste.first = node;
-    liste.count++;
-
-    listHeader_print(&liste); // Affichage de la liste
-    list_print( &liste);
-
-    // Libération de la mémoire allouée
-    free(node);
-
-    return EXIT_SUCCESS;
-}
-
-// Etat initial d'une liste
-void listHeader_init( ListHeader *liste)
-{
-    liste->count = 0;
-    liste->first = NULL;
-}
-
-// Affichage données de la l'entete de la liste
-void listHeader_print( ListHeader *liste)
-{
-    printf("Entete liste:\n");
-    printf("\tcount:%d\n", liste->count);
-    printf("\tfirst:%p\n", liste->first);
-}
-
-// Affichage données de la liste
-void list_print( ListHeader *liste)
-{
-    Node *p = liste->first;
-
-    while (p != NULL) {
-        printf("Element liste:\n");
-        printf("\tdata:%d\n", p->data);
-        printf("\tnext:%p\n", p->next);
-        p = p->next;
-    }
-
-}
+!!!include(etape3.c)!!!
 ```
 
 ## Ajout d'un élément en tête de liste
 
-liste4.c
+etape4.c
 
 ```C
+!!!include(etape4.c)!!!
+```
+## liste.c : fonctions de gestion des listes
 
+liste.c:
+```C
+!!!include(liste.c)!!!
 ```

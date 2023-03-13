@@ -1,17 +1,17 @@
-liste1: liste1.c
-	gcc -Wall -Werror -Wextra -o liste1 liste1.c
+etape1: etape1.c liste.h
+	gcc -Wall -Werror -Wextra -o etape1 etape1.c
 
-liste2: liste2.c
-	gcc -Wall -Werror -Wextra -o liste2 liste2.c
+etape2: etape2.c liste.h liste.c
+	gcc -Wall -Werror -Wextra -o etape2 etape2.c liste.c
 
-liste3: liste3.c
-	gcc -Wall -Werror -Wextra -o liste3 liste3.c
+etape3: etape3.c liste.h liste.c
+	gcc -Wall -Werror -Wextra -o etape3 etape3.c liste.c
 
-liste4: liste4.c
-	gcc -Wall -Werror -Wextra -o liste4 liste4.c
+etape4: etape4.c liste.h liste.c
+	gcc -Wall -Werror -Wextra -o etape4 etape4.c liste.c
 
 clean:
-	rm liste1
-	rm liste2
-	rm liste3
-	rm liste4	
+	rm etape1
+	rm etape2
+	rm etape3
+	rm etape4	
