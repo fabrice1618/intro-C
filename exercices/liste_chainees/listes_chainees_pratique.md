@@ -23,25 +23,99 @@ class Node{
 Node *-- Liste
 ```
 
-liste.h:
+extrait liste.h:
 ```C
-!!!include(liste.h)!!!
+// Element de la liste
+typedef struct node {
+    int data;
+    struct node *next;
+} Node;
+
+// Entete de la liste
+typedef struct liste {
+    int count;
+    Node *first;
+} Liste;
 ```
 
 ## La première liste 
+
 etape1.c:
 ```C
-!!!include(etape1.c)!!!
+#include <stdlib.h>
+#include <stdio.h>
+#include "liste.h"
+
+int main()
+{
+    Liste liste;
+    Node node;          // creation statique
+    Node *p;
+
+    // Initialisation de la liste
+    liste.count = 0;
+    liste.first = NULL;
+
+    // Initialisation du noeud
+    node.data = 42;
+    node.next = NULL;
+
+    // Ajout du noeud à la liste
+    liste.first = &node;
+    liste.count++;
+
+    // Affichage de l'entete de la liste
+    printf("Entete liste: count=%d first=%p\n", liste.count, liste.first);
+
+    // Affichage des elements de la liste
+    p = liste.first;
+    while (p != NULL) {
+        printf("\tElement: data:%d next:%p\n", p->data, p->next);
+        p = p->next;
+    }
+
+    return EXIT_SUCCESS;
+}
 ```
 
 ## Création d'une liste vide
 
 etape2.c:
 ```C
-!!!include(etape2.c)!!!
+#include <stdlib.h>
+#include <stdio.h>
+#include "liste.h"
+
+int main()
+{
+    Liste liste;
+    
+    liste_init(&liste);
+    liste_print_entete(&liste);
+
+    return EXIT_SUCCESS;
+}
 ```
 
-liste.c: voir ci-dessous
+liste.c:
+```C
+#include <stdlib.h>
+#include <stdio.h>
+#include "liste.h"
+
+// Etat initial d'une liste
+void liste_init( Liste *liste )
+{
+    liste->count = 0;
+    liste->first = NULL;
+}
+
+// Affichage données de la l'entete de la liste
+void liste_print_entete( Liste *liste )
+{
+    printf("Entete liste: count=%d first=%p\n", liste->count, liste->first);
+}
+```
 
 Il est important de toujours initialiser la liste chaînée à NULL. Le cas échéant, elle sera considérée comme contenant au moins un élément. C'est une erreur fréquente. A garder en mémoire, il est plus sage de toujours initialiser vos pointeurs.
 
@@ -79,7 +153,55 @@ The free() function returns no value.
 
 etape3.c:
 ```C
-!!!include(etape3.c)!!!
+#include <stdlib.h>
+#include <stdio.h>
+#include "liste.h"
+
+int main()
+{
+    Liste liste;
+    Node *node;          // creation dynamique
+
+    liste_init(&liste);    // Initialisation de la liste
+    
+    // Allocation dynamique d'un noeud
+    node = malloc( sizeof(Node) );
+    if (node == NULL) {
+        fprintf(stderr, "Erreur allocation mémoire\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // Initialisation du noeud
+    node->data = 42;
+    node->next = NULL;
+
+    // Ajout du noeud à la liste
+    liste.first = node;
+    liste.count++;
+
+    liste_print_entete(&liste); // Affichage de la liste
+    liste_print( &liste);
+
+    // Libération de la mémoire allouée
+    free(node);
+
+    return EXIT_SUCCESS;
+}
+
+```
+
+extrait liste.c:
+```C
+// Affichage des elements de la liste
+void liste_print( Liste *liste)
+{
+    Node *p = liste->first;
+
+    while (p != NULL) {
+        printf("\tElement: data:%d next:%p\n", p->data, p->next);
+        p = p->next;
+    }
+}
 ```
 
 ## Ajout d'un élément en tête de liste
@@ -87,11 +209,71 @@ etape3.c:
 etape4.c
 
 ```C
-!!!include(etape4.c)!!!
-```
-## liste.c : fonctions de gestion des listes
+#include <stdlib.h>
+#include <stdio.h>
+#include "liste.h"
 
-liste.c:
+int main()
+{
+    Liste liste;
+    Node *node;          // creation dynamique
+
+    liste_init(&liste);    // Initialisation de la liste
+    
+    // Création de 4 noeuds
+    for (int i = 0; i < 4; i++) {
+        node = node_create(i);
+        node_set_next(node, liste.first);
+        liste.first = node;
+        liste.count++;
+    }
+
+    liste_print_entete(&liste); // Affichage de la liste
+    liste_print( &liste);
+
+    // Libération de la mémoire allouée
+    liste_free(&liste);
+
+    return EXIT_SUCCESS;
+}
+```
+
+extrait liste.c:
 ```C
-!!!include(liste.c)!!!
+// Creation dynamique d'un noeud
+Node *node_create(int data)
+{
+    Node *node;          // creation dynamique
+
+    node = malloc( sizeof(Node) );
+    if (node == NULL) {
+        fprintf(stderr, "Erreur allocation mémoire\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // Initialisation du noeud
+    node->data = data;
+    node->next = NULL;
+
+    return(node);
+}
+
+// Affecter element suivant à un noeud
+void node_set_next(Node *node, Node *next)
+{
+    node->next = next;
+}
+
+// Libération de la mémoire allouée pour les éléments de la liste
+void liste_free(Liste *liste)
+{
+    Node *p = liste->first;
+    Node *p_next;
+
+    while (p != NULL) {
+        p_next = p->next;
+        free(p);
+        p = p_next;
+    }
+}
 ```
