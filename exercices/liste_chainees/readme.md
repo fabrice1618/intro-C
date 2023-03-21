@@ -10,12 +10,17 @@
 - libération de tous les éléments d'une liste liste_free()
 
 # A créer
-- Afficher un noeud de la liste
+* Afficher un noeud de la liste
 - déplacement dans la liste (au début, à la fin, à une position donnée, à l'élément suivant)
 - Affichage d'un noeud (au début, à la fin et ailleurs)
 - Ajout  d'un noeud (au début, à la fin et ailleurs)
 - suppression d'un noeud (au début, à la fin et ailleurs)
 
 
+# Deja fait
+
+- Afficher un noeud de la liste  node_print()
+- déplacement dans la liste au début liste_aller_debut()
+- déplacement dans la liste a la fin liste_aller_fin
 
 

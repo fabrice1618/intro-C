@@ -6,7 +6,12 @@ non-exporte/
 geoip/
 tri/
 exercices/liste_chainees/old*
+exercices/liste_chainees/liste_alt.c
+exercices/liste_chainees/liste_g1.c
 exercices/divers/*
 exercices/matrices/*
 exercices/quiz/*
 exercices/tris/*
+exercices/rationnel/Makefile
+exercices/rationnel/rationnel
+exercices/rationnel/rationnel_fab.c
