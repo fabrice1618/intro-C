@@ -9,9 +9,15 @@ exercices/liste_chainees/old*
 exercices/liste_chainees/liste_alt.c
 exercices/liste_chainees/liste_g1.c
 exercices/divers/*
-exercices/matrices/*
+exercices/matrices/mat*.txt
+exercices/matrices/Makefile
+exercices/matrices/liens.md
+exercices/matrices/transpose.c
+exercices/matrices/addition.c
+exercices/matrices/multiplication.c
 exercices/quiz/*
 exercices/tris/*
 exercices/rationnel/Makefile
 exercices/rationnel/rationnel
 exercices/rationnel/rationnel_fab.c
+exercices/rationnel/rationnel_fab
