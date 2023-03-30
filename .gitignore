@@ -16,7 +16,8 @@ exercices/matrices/transpose.c
 exercices/matrices/addition.c
 exercices/matrices/multiplication.c
 exercices/quiz/*
-exercices/tris/*
+exercices/chunck/*
+exercices/tris/prive.md
 exercices/rationnel/Makefile
 exercices/rationnel/rationnel
 exercices/rationnel/rationnel_fab.c
