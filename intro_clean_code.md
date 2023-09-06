@@ -1,6 +1,6 @@
 # Clean code
 
-![Uncle Bob](uncle_Bob_Caricature.jpg)
+![Uncle Bob](intro_clean_code_image.jpg)
 
 ## Introduction
 
