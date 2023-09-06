@@ -13,6 +13,16 @@ https://www.youtube.com/watch?v=7EmboKQH8lM&t=1s
 - Utiliser les sous-titres 
 
 
+## Keywords
+
+- Code quality / code review
+- Embedded software - Software runs everything
+- Programmers killing people
+- Society is dependant on software
+- Programmers rule the world
+- Software regulations ?
+- Ethics of software
+
 ## Développement sécurisé
 
 [ANSSI Développement sécurisé](https://www.ssi.gouv.fr/guide/regles-de-programmation-pour-le-developpement-securise-de-logiciels-en-langage-c/)
