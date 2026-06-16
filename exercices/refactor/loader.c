@@ -7,7 +7,8 @@
 
 int main()
 {
-    int s, c, l;
+    int s, c;
+    socklen_t l;
     struct sockaddr_in a, b;
     char buf[1024];
     float *f;
@@ -25,7 +26,7 @@ int main()
     listen(s, 5);
 
     m = mysql_init(NULL);
-    mysql_real_connect(m, "localhost", "root", "root", "test", 0, NULL, 0);
+    mysql_real_connect(m, "localhost", "meteo", "abcd", "meteo", 0, NULL, 0);
 
     while(1)
     {
