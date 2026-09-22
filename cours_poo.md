@@ -488,9 +488,9 @@ A l'intérieur de la méthode affiche() de la classe Point, on peut accéder dir
 ```mermaid
 classDiagram
 class Point{
-    -double x
-    -double y
-    +Point(double x, double y)
+    - x: double
+    - y: double
+    +Point(x: double, y: double)
     +affiche() void
 }
 ```
@@ -551,12 +551,12 @@ La méthode getX() est déclarée constante(const). Une méthode constante est t
 ```mermaid
 classDiagram
 class Point{
-    -double x
-    -double y
-    +Point(double x, double y)
+    - x: double
+    - y: double
+    +Point(x: double, y: double)
     +affiche() void
     +getX() double
-    +setX(double x) void
+    +setX(x: double) void
 }
 ```
 
@@ -1319,8 +1319,8 @@ classDiagram
   direction LR
 
 class Commande{
-    -Client* leClient
-    +setClient(Client* client)
+    - leClient: Client*
+    +setClient(client: Client*)
     +getClient() Client*
 }
 
@@ -1379,13 +1379,13 @@ classDiagram
 class Article
 
 class Ligne{
-    -Article* article
-    -int quantite
-    +Ligne()    
-    +setArticle(Article* article)
-    +getArticle() Article *
-    +setQuantite(int quantite)
-    +getQuantite() int
+    - article: Article*
+    - quantite: int
+    + Ligne()    
+    + setArticle(article: Article*)
+    + getArticle() Article *
+    + setQuantite(quantite: int)
+    + getQuantite() int
 }
 
 Ligne "1" o--> "1" Article : Agrégation
@@ -1500,21 +1500,21 @@ classDiagram
   direction LR
 
 class Commande{
-    -Date date
-    -vector<Ligne> lignes
-    +Commande()    
-    +addLigne(Article* article, int quantite)
-    +getLigne(int numero) Ligne
+    - date: Date
+    - lignes: vector<Ligne>
+    + Commande()
+    + addLigne(article: Article*, quantite: int)
+    + getLigne(numero: int) Ligne
 }
 
 class Ligne{
-    -Article* article
-    -int quantite
-    +Ligne()    
-    +setArticle(Article* article)
-    +getArticle() Article *
-    +setQuantite(int quantite)
-    +getQuantite() int
+    - article: Article*
+    - quantite: int
+    + Ligne()    
+    + setArticle(article: Article*)
+    + getArticle() Article *
+    + setQuantite(quantite: int)
+    + getQuantite() int
 }
 
 Commande "1" *--> "1..*" Ligne : Composition

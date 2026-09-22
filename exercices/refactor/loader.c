@@ -7,7 +7,7 @@
 
 int main()
 {
-    int s, c;
+    int sockfd, c;
     socklen_t l;
     struct sockaddr_in a, b;
     char buf[1024];
@@ -15,15 +15,16 @@ int main()
     MYSQL *m;
     char q[512];
 
-    s = socket(AF_INET, SOCK_STREAM, 0);
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    // TODO: vérifier valeur retour == 0
 
     a.sin_family = AF_INET;
     a.sin_port = htons(1618);
     a.sin_addr.s_addr = INADDR_ANY;
 
-    bind(s, (struct sockaddr*)&a, sizeof(a));
+    bind(sockfd, (struct sockaddr*)&a, sizeof(a));
 
-    listen(s, 5);
+    listen(sockfd, 5);
 
     m = mysql_init(NULL);
     mysql_real_connect(m, "localhost", "meteo", "abcd", "meteo", 0, NULL, 0);
@@ -31,7 +32,7 @@ int main()
     while(1)
     {
         l = sizeof(b);
-        c = accept(s, (struct sockaddr*)&b, &l);
+        c = accept(sockfd, (struct sockaddr*)&b, &l);
 
         read(c, buf, 1024);
 
